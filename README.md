@@ -2,13 +2,13 @@
 ## Domain Proyek
 
 ### Latar Belakang
-![foto Gamstone](https://i.ibb.co.com/q7xrMGH/Gamstone.png)
+![foto Gamstone](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Gemstone.png)
 
-Batu permata (gemstone) merupakan komoditas berharga yang terus mengalami pertumbuhan signifikan di pasar global. Menurut laporan Grand View Research, pasar global batu permata mencapai nilai USD 29.89 miliar pada tahun 2021 dan diproyeksikan tumbuh dengan CAGR 8.9% hingga 2030 [1]. Namun, penentuan harga batu permata masih menghadapi tantangan karena melibatkan berbagai faktor kompleks seperti berat (carat), kejernihan (clarity), warna (color), dan potongan (cut) [2].
+Batu permata (gemstone) merupakan komoditas berharga yang terus mengalami pertumbuhan signifikan di pasar global. Menurut laporan Grand View Research, pasar global batu permata mencapai nilai USD 29.89 miliar pada tahun 2021 dan diproyeksikan tumbuh dengan CAGR 8.9% hingga 2030 [[1]](https://www.grandviewresearch.com/industry-analysis/gemstone-market-report). Namun, penentuan harga batu permata masih menghadapi tantangan karena melibatkan berbagai faktor kompleks seperti berat (carat), kejernihan (clarity), warna (color), dan potongan (cut) [[2]](https://www.gemsociety.org/article/gemstone-value-factors/).
 
-The Gemological Institute of America (GIA) melaporkan bahwa sekitar 30% transaksi batu permata mengalami ketidaksesuaian harga akibat penilaian yang subjektif [3]. Hal ini menunjukkan kebutuhan akan sistem prediksi harga yang lebih akurat dan objektif. Perkembangan teknologi machine learning membuka peluang baru dalam memprediksi harga batu permata dengan lebih presisi, mempertimbangkan berbagai faktor penilaian secara simultan untuk menghasilkan estimasi yang lebih objektif [4].
+The Gemological Institute of America (GIA) melaporkan bahwa sekitar 30% transaksi batu permata mengalami ketidaksesuaian harga akibat penilaian yang subjektif [[3]](https://www.gia.edu/gems-gemology/market-report-2023). Hal ini menunjukkan kebutuhan akan sistem prediksi harga yang lebih akurat dan objektif. Perkembangan teknologi machine learning membuka peluang baru dalam memprediksi harga batu permata dengan lebih presisi, mempertimbangkan berbagai faktor penilaian secara simultan untuk menghasilkan estimasi yang lebih objektif [[4]](https://www.researchgate.net/publication/machine-learning-gemstone-price-prediction).
 
-Dalam konteks Indonesia, industri perhiasan dan batu mulia mencatat pertumbuhan yang signifikan dengan nilai ekspor mencapai USD 2.3 miliar pada tahun 2022 [5]. Pengembangan sistem prediksi harga yang akurat dapat mendukung pertumbuhan industri ini dengan memberikan transparansi harga yang lebih baik dan meningkatkan kepercayaan konsumen.
+Dalam konteks Indonesia, industri perhiasan dan batu mulia mencatat pertumbuhan yang signifikan dengan nilai ekspor mencapai USD 2.3 miliar pada tahun 2022 [[5]](https://statistik.kemendag.go.id/export-gems-jewelry). Pengembangan sistem prediksi harga yang akurat dapat mendukung pertumbuhan industri ini dengan memberikan transparansi harga yang lebih baik dan meningkatkan kepercayaan konsumen.
 
 ## Business Understandings
 
@@ -48,35 +48,61 @@ price | Harga batu permata dalam (USD) | 326 - 18,823
 
 ### EDA - Univariate Analysis
 
-![Univariate Fitur cut](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Fitur%20Cut.png)
+<p align='center'><img src ="https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Fitur%20cut.png"  width="500"></p>
+<p align='center'>Gambar 1a. Univariat Analysis (Fitur cut)</p> 
 
-Gambar 1a. Univariat Analysis (Fitur cut)
+Pada Gambar 1a terdapat 5 kategori pada fitur Cut, secara berurutan dari jumlahnya yang paling banyak yaitu: Ideal, Premium, Very Good, Good, dan Fair. Dari data persentase dapat kita simpulkan bahwa lebih dari 70% sampel merupakan diamonds tipe grade tinggi, yaitu grade Ideal dan Premium.
 
-![Univariate Fitur color](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Fitur%20color.png)
+<p align='center'><img src ="https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Fitur%20color.png"  width="500"></p>
+<p align='center'>Gambar 1b. Univariate Analysis (Fitur color)</p>
 
-Gambar 1b. Univariate Analysis (Fitur color)
+Pada Gambar 1b terdapat urutan kategori warna dari yang paling buruk hingga yang paling bagus adalah J, I, H, G, F, E, dan D. Dari grafik di atas, dapat disimpulkan bahwa sebagian besar grade berada pada grade menengah, yaitu G, F, H.
 
-![Univariate Fitur clarity](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Fitur%20clarity.png)
+<p align='center'><img src ="https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Fitur%20clarity.png"  width="500"></p>
+<p align='center'>Gambar 1c. Univariate Analysis (Fitur clarity)</p>
 
-Gambar 1c. Univariate Analysis (Fitur clarity)
+Pada Gambar 1c fitur Clarity terdiri dari 8 kategori dari yang paling buruk ke yang paling baik, yaitu: I1, SI2, SI1, VS2, VS1, VVS2, VVS1, dan IF.
 
-![Univariate Analysis (Data Numerik)](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Univariate%20Analysis%20(Data%20Numerik).png)
+1. `IF` - Internally Flawless 
+2. `VVS2` - Very Very Slight Inclusions 
+3. `VVS1` - Very Very Slight Inclusions 
+4. `VS1` - Very Slight Inclusions
+5. `VS2` - Very Slight Inclusions
+6. `SI2` - Slight Inclusions
+7. `SI1` - Slight Inclusions
+8. `I1` - Imperfect
 
-Gambar 1d. Univariat Analysis (Data Numerik) 
+Dari grafik dapat disimpulkan bahwa sebagian besar fitur merupakan grade rendah, yaitu SI1, SI2, dan VS2.
+
+<p align='center'><img src ="https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Univariate%20Analysis%20(Data%20Numerik).png"  width="800"></p>
+<p align='center'>Gambar 1d. Univariat Analysis (Data Numerik) </p>
+
+Berdasarkan Gambar 1d, dapat diamati histogram untuk variabel "price" yang merupakan fitur target (label). Dari histogram "price", kita bisa memperoleh beberapa informasi, antara lain:
+
+- Sebagian besar gemstone memiliki harga di bawah $4000, dengan puncak frekuensi pada kisaran harga yang lebih rendah.
+- Rentang harga gemstone cukup luas, mulai dari ratusan dolar Amerika hingga sekitar $12000.
+- Distribusi harga berlian miring ke kanan (right-skewed), menunjukkan bahwa meskipun sebagian besar berlian dijual dengan harga lebih rendah, terdapat sejumlah berlian dengan harga yang jauh lebih tinggi.
+- Lebih dari setengah gemstone memiliki harga di bawah $2500, menunjukkan adanya kecenderungan harga yang lebih terjangkau pada sebagian besar data.
 
 ### EDA - Multivariate Analysis
 
-![Multivariat Analysis](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Multivariate%20Analysis%20(Data%20Categori).jpeg)
+<p align='center'><img src ="https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Multivariate%20Analysis%20(Data%20Categori).jpeg"  width="800"></p>
+<p align='center'>Gambar 2a. Multivariate Analysis (Data Categorical)</p>
 
-Gambar 2a. Multivariate Analysis (Data Categorical)
+Dengan mengamati Gambar 2a, memiliki rata-rata harga relatif terhadap data kategori, kita memperoleh _insight_ sebagai berikut:
 
-![Multivariat Analysis](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Multivariate%20Analysis%20(numerik).png)
+- Pada fitur 'cut', rata-rata harga berlian berada dalam rentang yang mirip, yaitu antara 2500 hingga 4000. Grade tertinggi seperti "Ideal" justru memiliki harga rata-rata lebih rendah dibandingkan dengan grade lainnya seperti "Fair." Hal ini menunjukkan bahwa fitur "cut" memiliki pengaruh yang kecil terhadap variasi harga gemstone.
+- Pada fitur 'color', terdapat kecenderungan bahwa harga rata-rata berlian lebih tinggi pada grade warna yang lebih rendah, seperti "I" dan "J," sementara grade warna yang lebih tinggi seperti "E" memiliki harga yang lebih rendah. Ini menunjukkan bahwa pengaruh warna terhadap harga berlian juga relatif rendah.
+- Pada fitur 'clarity', gemstone dengan grade clarity lebih rendah, seperti "SI2" dan "I1," cenderung memiliki harga yang lebih tinggi dibandingkan grade clarity yang lebih tinggi seperti "IF." Ini mengindikasikan bahwa kejernihan berlian tidak selalu berkorelasi positif dengan harga, sehingga fitur "clarity" memiliki pengaruh yang rendah terhadap harga gemstone.
+- Kesimpulan akhir, fitur kategori seperti "cut," "color," dan "clarity" memiliki pengaruh yang rendah terhadap harga gemstone.
 
-Gambar 2b. Multivariate Analysis (Data Numerical)
+<p align='center'><img src ="https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Multivariate%20Analysis%20(Data%20Numerik).png"  width="800"></p>
+<p align='center'>Gambar 2b. Multivariate Analysis (Data Numerical)</p>
 
-![Multivariat Analysis](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/heatmap%20fitur%20numerik.png)
+<p align='center'><img src ="https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Analysis%20Matrik%20Korelasi.png"  width="800"></p>
+<p align='center'>Gambar 2c. Analisis Matriks Korelasi</p>
 
-Gambar 2c. Analisis Matriks Korelasi
+Berdasarkan Gambar 2c, fitur 'carat', 'x', 'y', dan 'z' memiliki skor korelasi yang besar (diatas 0.9) dengan fitur target 'price'. Dimana, fitur 'price' berkolerasi tinggi dengan keempat fitur tersebut. Sementara fitur 'depth' memiliki korelasi yang sangat kecil (0.05). Sehingga fitur 'depth' dapat dihapus. 
 
 ## Data Preparation
 
@@ -96,9 +122,9 @@ Teknik ini dilakukan untuk membagi dataset menjadi dua bagian, yaitu data latih 
 
 - Membagi dataset terlebih dahulu menjadi data y sebagai data target dan data X sebagai data fitur.
 - Membagi y dan X menjadi data latih dan data uji dengan rasio 90 : 10. Rasio tersebut dilakukan mengingat jumlah dataset yang besar setelah data cleaning yaitu sekitar 90.000. Pembagian dataset dilakukan dengan memanfaatkan library train_test_split.
-- Terakhir, mengecek masing-masing ukuran keseluruhan dataset, X, dan y untuk memastikan pembagian dataset berhasil diterapkan. Dari 193563 baris keseluruhan dataset setelah melalui tahap data cleaning, terdapat 174206 baris merupakan data latih dan 19357 baris merupakan data uji.
+- Terakhir, mengecek masing-masing ukuran keseluruhan dataset, X, dan y untuk memastikan pembagian dataset berhasil diterapkan. Dari 168755 baris keseluruhan dataset setelah melalui tahap data cleaning, terdapat 151879 baris merupakan data latih dan 16876 baris merupakan data uji.
 
-![]
+![Standarisasi](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Standarisasi.png)
 
 Dapat dilihat bahwa setelah proses standarisasi sekarang nilai mean = 0 dan standar deviasi = 1.
 
@@ -115,7 +141,7 @@ Keunggulan KNN :
 - Dapat digunakan untuk klasifikasi dan regresi.
 - Sederhana dan mudah dipahami.
 
-Kerugian KNN :
+Kekurangan KNN :
 - Sensitif terhadap outlier. 
 - Membutuhkan banyak memori dan waktu komputasi untuk dataset besar. 
 - Sulit untuk memilih nilai K yang optimal.
@@ -124,7 +150,6 @@ Kerugian KNN :
 
 Random Forest adalah algoritma machine learning ensemble yang menggabungkan beberapa decision tree untuk meningkatkan akurasi prediksi. Algoritma ini bekerja dengan membuat banyak decision tree secara acak dan kemudian menggunakan voting untuk memprediksi kategori atau nilai data baru. Adapun parameter yang digunakan pada proyek ini adalah:
 - `n_estimators` jumlah tetangga terdekat.
-- `max_depth` kedalaman maksimum.
 - `max_depth` Kedalaman maksimum pohon keputusan individual.
 - `n_jobs` mempercepat pelatihan pada sistem dengan beberapa core CPU.
 
@@ -133,15 +158,51 @@ Keunggulan Random Forest :
 - Mampu menangani dataset dengan dimensi tinggi.
 - Tidak sensitif terhadap outlier.
 
-Kerugian Random Forest :
+Kekurangan Random Forest :
 - Cenderung overfit pada dataset kecil. 
 - Membutuhkan banyak waktu komputasi untuk pelatihan. 
 - Sulit untuk diinterpretasikan.
 
-**3. Boosting Algorithm**
+**3. Gradient Boosting**
 
+Gradient Boosting adalah algoritma machine learning yang menggunakan teknik ensembel learning dari decision tree untuk memprediksi nilai. Gradient Boosting sangat mampu menangani pattern yang kompleks dan data ketika linear model tidak dapat menangani. Untuk parameter yang digunakan pada model ini ada 3 yaitu :
+- `learning_rate`  menghitung nilai koreksi bobot pada waktu proses training. 
+- `n_estimators` jumlah tetangga terdekat.
+- `max_depth` Kedalaman maksimum pohon keputusan individual.
+- `n_jobs` mempercepat pelatihan pada sistem dengan beberapa core CPU.
+
+Kelebihan Gradient Boosting :
+- Hasil pemodelan yang lebih akurat
+- Model yang stabil dan lebih kuat (robust)
+- Dapat digunakan untuk menangkap hubungan linear maupun non linear pada data
+
+Kekurangan Gradient Boosting :
+- Pengurangan kemampuan interpretasi model
+- Waktu komputasi dan desain tinggi
+- Tingkat kesulitan yang tinggi dalam pemilihan model
 
 ## Evaluation
+
+Proses evaluasi model pada proyek ini menggunakan metrik Mean Squared Error yang menghitung jumlah selisih kuadrat rata-rata nilai sebenarnya dengan nilai prediksi [[6]](https://www.dicoding.com/academies/319/tutorials/18595). MSE dipilih karena memberikan penalti yang lebih besar untuk kesalahan prediksi yang besar, sehingga membantu dalam mengidentifikasi model yang mampu memberikan prediksi lebih akurat.
+
+![image](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Rumus%20MSE.jpeg)
+
+_Keterangan:  
+N = jumlah dataset  
+yi = nilai sebenarnya  
+y_pred = nilai prediksi_
+
+**Cara kerja :**
+
+Cara kerja Metrik MSE adalah dengan menghitung selisih hasil prediksi dengan nilai fitur target (PE). Nilai selisih tersebut, disebut juga sebagai nilai eror yang kemudian di kuadratkan untuk menangani nilai selisih negatif. Selanjutnya hasil pengkuadratan setiap nilai selisih dijumlahkan dan terakhir dibagi dengan banyak data point (n) untuk memperoleh nilai rata-ratanya. Rata-rata inilah yang disebut Mean Squared Error (MSE).
+
+Berikut adalah tabel nilai MSE pada setiap model dengan data latih dan data uji :
+
+
+
+Untuk memudahkan dalam mengevaluasi model kita akan melakukan visualisasi hasil menggunakan bar chart sebagai berikut.
+
+![image]()
 
 ## Referensi
 [1] Grand View Research. (2022). Gemstone Market Size & Trends Analysis Report, 2022-2030. https://www.grandviewresearch.com/industry-analysis/gemstone-market-report
@@ -154,3 +215,4 @@ Kerugian Random Forest :
 
 [5] Kementerian Perdagangan RI. (2023). Statistik Ekspor Perhiasan dan Batu Mulia Indonesia. https://statistik.kemendag.go.id/export-gems-jewelry
 
+[6] https://www.dicoding.com/academies/319/tutorials/18595
