@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/2e056b95-b4de-4fbd-8bd4-e6916c9d44f7)# Laporan Proyek Machine Learning -Febri Isthifa Adha
+# Laporan Proyek Machine Learning - Febri Isthifa Adha
 ## Domain Proyek
 
 ### Latar Belakang
