@@ -156,7 +156,7 @@ Berdasarkan Gambar 1d, dapat diamati histogram untuk variabel "price" yang merup
 ### EDA - Multivariate Analysis
 
 ![Multivariate Analysis](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Multivariate%20Analysis%20(Data%20Categori).jpeg)
-<p align='center'>Gambar 2a. Multivariate Analysis (Data Categorical)</p>
+Gambar 2a. Multivariate Analysis (Data Categorical)
 
 Dengan mengamati Gambar 2a, memiliki rata-rata harga relatif terhadap data kategori, kita memperoleh _insight_ sebagai berikut:
 
