@@ -1,7 +1,9 @@
 # Laporan Proyek Machine Learning - Febri Isthifa Adha
-![foto Gamstone](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Gemstone.png)
+
+![foto Gamstone](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/57c8030e7c2d3b4ee7ceeeb6dc26e0c886893d4f/images/Gemstone.png)
 
 ## Domain Proyek
+
 Domain yang dipilih untuk proyek machine learning ini adalah **Ekonomi dan Bisnis**, dengan judul _"Predictive Analytics Gemstone Price"._
 
 ### Latar Belakang
@@ -15,101 +17,160 @@ Berdasarkan permasalahan di atas, maka pada proyek ini akan dibangun suatu model
 ## Business Understandings
 
 ### Problem Statements
+
 Berdasarkan latar belakang yang telah diuraikan, berikut adalah rumusan masalah yang akan diselesaikan dalam proyek ini:
-- Bagaimana cara melakukan tahap persiapan data sebelum digunakan untuk pelatihan model machine learning?
 - Dari serangkaian fitur yang ada, fitur apa yang paling berpengaruh terhadap harga gemstone?
 - Berapa harga pasar gemstone dengan karakteristik atau fitur tertentu?
 
 ### Goals
+
 Tujuan dari proyek ini adalah:
-- Untuk melakukan tahap persiapan data atau data preparation, agar data yang digunakan dapat dipakai untuk melatih model machine learning.
 - Mengetahui fitur yang paling berkorelasi dengan harga gamstone.
 - Membuat model machine learning yang dapat memprediksi harga gamstone seakurat mungkin berdasarkan fitur-fitur yang ada.
 
 ### Solution statements
+
 Untuk mencapai goals yang telah ditetapkan, berikut adalah solusi yang akan diterapkan:
-- Melakukan proses persiapan data dengan model machine learning dari awal hingga selesai, meliputi data Understanding, Exploratory Data Analysis (EDA), modelling, dan evaluation.
-- Membangun model regresi dengan harga gamstone sebagai target.
-- Membuat 3 model, lalu memilih 1 model terbaik yang memiliki tingkat akurasi terbaik berdasarkan metrik Mean Squared Error (MSE).
+1. Membangun model regresi dengan harga gamstone sebagai target.
+2. Membuat model _machine learning_ untuk mendapatkan model yang paling baik dari 3 algoritma yang berbeda dan kemudian akan dilakukan evaluasi model untuk membandingkan performa model yang terbaik. Algoritma yang akan digunakan, yaitu Algoritma K-Nearest Neighbor, Algoritma Random Forest, dan Boosting Algorithm.
+    - **Algoritma K-Nearest Neighbor**
+
+      Algoritma K-Nearest Neighbor (KNN) adalah algoritma sederhana yang mengklasifikasikan data atau kasus baru berdasarkan ukuran kesamaan. Hal ini sebagian besar digunakan untuk mengklasifikasikan titik data berdasarkan tetangga terdekatnya sebagai acuan [[4]](https://towardsdatascience.com/a-simple-introduction-to-k-nearest-neighbors-algorithm-b3519ed98e).
+
+    - **Algoritma Random Forest**
+
+      Algoritma Random Forest adalah algoritma machine learning yang kuat yang dapat digunakan untuk berbagai tugas termasuk regresi dan klasifikasi. Ini adalah metode ensemble, yang berarti bahwa model random forest terdiri dari banyak decision tree kecil, yang disebut estimator, yang masing-masing menghasilkan prediksi mereka sendiri. Random forest menggabungkan prediksi estimator untuk menghasilkan prediksi yang lebih akurat [[5]](https://deepai.org/machine-learning-glossary-and-terms/random-forest). 
+      
+    - **Algoritma Gradient Boosting**
+
+      Algoritma Gradient Boosting adalah sebuah teknik yang menggabungkan beberapa model yang lemah (weak model) menjadi sebuah model yang kuat. Model-model lemah ini sering disebut dengan weak learners, dan dapat berupa model regresi atau klasifikasi sederhana seperti Decision Tree. Algoritma ini menggunakan pendekatan iteratif, di mana setiap iterasi bertujuan untuk meningkatkan model sebelumnya dengan menambahkan model baru [[6]](https://www.trivusi.web.id/2023/03/algoritma-gradient-boosting.html).
 
 ## Data Understanding
 
-### EDA - Deskripsi Variabel
+Dataset yang digunakan dalam proyek ini adalah dataset [Gemstone Price](https://www.kaggle.com/datasets/dhanrajcodes/gemstone-price) yang diambil dari platfrom Kaggle. File yang digunakan berupa file csv, yaitu `gemstone.csv` dengan ukuran 10.46 MB. Dataset tersebut terdiri dari 193573 baris dan 11 columns
 
-Dataset yang digunakan dalam proyek ini adalah dataset yang diambil dari website [Kaggle](https://www.kaggle.com/datasets/dhanrajcodes/gemstone-price). Dataset ini menampilkan beragam jenis batu permata, termasuk berlian, rubi, safir, zamrud, dan banyak lagi. Setiap entri mencakup atribut penting seperti berat karat, potongan, warna, kejernihan, dan harga. Penjelasan lengkap mengenai variabel dalam dataset dapat dilihat pada list di bawah.
- 
-**Informasi Datasets**
+Dari dataset tersebut, dilakukan penghapusan kolom pertama yaitu id yang berisikan nomor masing-masing data.
 
-| Jenis | Keterangan |
-| ------ | ------ |
-| Title | _Gemstone Price_ |
-| Source | [Kaggle](https://www.kaggle.com/datasets/dhanrajcodes/gemstone-price) |
-| Maintainer | [Out-liar](https://www.kaggle.com/dhanrajcodes) |
-| License | Other (specified in description) |
-| Visibility | Publik |
-| Tags | _Earth and Nature_ |
-| Usability | 8.24 |
+Kemudian dilakukan proses Exploratory Data Analysis (EDA) yang merupakan proses investigasi awal pada data untuk menganalisis karakteristik, menemukan pola, anomali, dan memeriksa asumsi pada data.
 
-### Variabel-variabel pada Dataset
+1. **Deskripsi Variabel**
 
-| Variabel | Keterangan | Nilai
-|----------|----------|----------|
-| id | Identifier unik untuk setiap batu permata |  1, 2, 3 |
-| carat | Berat batu permata dalam satuan karat |  0.2 - 5.01 |
-| cut | Kualitas potongan batu permata | Fair, Good, Very Good, Premium, Ideal |
-| color | Warna batu permata | D, E, F, G, H, I, J (D adalah yang terbaik) |
-| clarity | Tingkat kejernihan batu permata | I1, SI2, SI1, VS2, VS1, VVS2, VVS1, IF (IF adalah yang terbaik) |
-| depth | Total kedalaman dalam persentase | 43.0 - 79.0 |
-| table | Lebar bagian atas batu permata relatif terhadap titik terlebar | 43.0 - 95.0 |
-| x | Panjang batu permata dalam mm |  0.0 - 10.74 |
-| y | Lebar batu permata dalam mm | 0.0 - 58.9 |
-| price | Harga batu permata dalam (USD) | 326 - 18,823 |
+   Pada deskripsi variabel dilakukan pengecekan informasi variabel dari dataset yaitu jumlah kolom, nama kolom, jumlah data per kolom dan tipe datanya.
 
-### EDA - Menangani Missing Value dan Outliers
+   Berikut adalah informasi variabel dari dataset Gemstone Price:
 
-**Menangani Missing Value**
+   **Tabel 1. Deskripsi Variabel**
+   | # | Column  | Non-Null Count  | Dtype   |
+   |---|---------|-----------------|---------|  
+   | 0 | carat   | 193573 non-null | float64 |
+   | 1 | cut     | 193573 non-null | object  |
+   | 2 | color   | 193573 non-null | object  |
+   | 3 | clarity | 193573 non-null | object  | 
+   | 4 | depth   | 193573 non-null | float64 |
+   | 5 | table   | 193573 non-null | float64 |
+   | 6 | x       | 193573 non-null | float64 |
+   | 7 | y       | 193573 non-null | float64 |
+   | 8 | z       | 193573 non-null | float64 |
+   | 9 | price   | 193573 non-null | int64   |
 
-Pendeteksian _missing value_ dilakukan menggunakan fungsi `isnull()`. Berikut hasil deteksi _missing value_ yang diperoleh:
+   Dari hasil di atas, terlihat bahwa kolom `cut`, `color`, `clarity` bertipe object, kolom `carat`, `depth`, `table`, `x`, `y`, `z` bertipe float64, dan kolom `price` bertipe int64.
 
-| Fitur | Jumlah _Missing Value_ |
-|--------|--------|
-| carat | 0 |
-| cat | 0 |
-| color | 0 |
-| clarity | 0 |
-| depth | 0 |
-| teble | 0 |
-| x | 0 |
-| y | 0 |
-| z | 0 |
-| price | 0 |
+   Berikut merupakan arti dari masing-masing variabel beserta nilai-nilainya.
 
-Pada data diatas dapat diketahui bahwa seluruh fitur pada dataset tidak memiliki _Missing Value_ (nilai NULL maupun NAN) sehingga dapat lanjut ke tahapan berikutnya.
+   **Tabel 2. Variabel**
+   | Variabel | Keterangan                                                     | Nilai                                            |
+   |----------|----------------------------------------------------------------|--------------------------------------------------|
+   | carat    | Berat batu permata dalam satuan karat                          |  0.2 - 5.01                                      |
+   | cut      | Kualitas potongan batu permata                                 | Fair, Good, Very Good, Premium, Ideal            |
+   | color    | Warna batu permata                                             | D, E, F, G, H, I, J (D best)                     |
+   | clarity  | Tingkat kejernihan batu permata                                | I1, SI2, SI1, VS2, VS1, VVS2, VVS1, IF (IF best) |
+   | depth    | Total kedalaman dalam persentase                               | 43.0 - 79.0                                      |
+   | table    | Lebar bagian atas batu permata relatif terhadap titik terlebar | 43.0 - 95.0                                      |
+   | x        | Panjang batu permata dalam mm                                  |  0.0 - 10.74                                     |
+   | y        | Lebar batu permata dalam mm                                    | 0.0 - 58.9                                       |
+   | price    | Harga batu permata dalam (USD)                                 | 326 - 18,823                                     |
 
-**Mendeteksi dan Menangani Outliers**
+2. **Deskripsi Statistik Data**
+   
+   Selanjutnya, kita akan melihat deskripsi statistik dari data yang dimiliki.
 
-Pada proyek ini, pendeteksian _outliers_ dilakukan dengan menerapkan teknik visualisasi data menggunakan _boxplot_. Berikut hasil pendeteksian _outliers_ untuk beberapa fitur pada dataset:
+   **Tabel 3. Deskripsi Statistik Data**
+   |       | carat         | depth         | table         | x             | y             | z             | price         |
+   |-------|---------------|---------------|---------------|---------------|---------------|---------------|---------------|
+   | count | 193573.000000 | 193573.000000 | 193573.000000 | 193573.000000 | 193573.000000 | 193573.000000 | 193573.000000 |
+   | mean	 | 0.790688	     | 61.820574	   | 57.227675	   | 5.715312	     | 5.720094	     | 3.534246	     | 3969.155414   |
+   | std	 | 0.462688	     | 1.081704	     | 1.918844	     | 1.109422	     | 1.102333	     | 0.688922	     | 4034.374138   |
+   | min	 | 0.200000	     | 52.100000	   | 49.000000	   | 0.000000	     | 0.000000	     | 0.000000	     | 326.000000    |
+   | 25%	 | 0.400000	     | 61.300000	   | 56.000000	   | 4.700000	     | 4.710000	     | 2.900000	     | 951.000000    |
+   | 50%	 | 0.700000	     | 61.900000	   | 57.000000	   | 5.700000	     | 5.720000	     | 3.530000	     | 2401.000000   |
+   | 75%	 | 1.030000	     | 62.400000	   | 58.000000	   | 6.510000	     | 6.510000	     | 4.030000	     | 5408.000000   |
+   | max	 | 3.500000	     | 71.600000	   | 79.000000	   | 9.650000	     | 10.010000	   | 31.300000	   | 18818.000000  |
 
-1. Fitur Carat
+   Fungsi `describe()` memberikan informasi statistik pada masing-masing kolom, antara lain:
+   - `Count` adalah jumlah sampel pada data.
+   - `Mean` adalah nilai rata-rata.
+   - `Std` adalah standar deviasi.
+   - `Min` yaitu nilai minimum setiap kolom.
+   - `25%` adalah kuartil pertama. Kuartil adalah nilai yang menandai batas interval dalam empat bagian sebaran yang sama.
+   - `50%` adalah kuartil kedua, atau biasa juga disebut median (nilai tengah).
+   - `75%` adalah kuartil ketiga.
+   - `Max` adalah nilai maksimum.
 
-![image carat](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Outlier%20carat.png)
+3. **Menangani Missing Value**
 
-2. Fitur Table
+   Dilakukan pengecekan nilai yang hilang atau missing valie pada kolom x, y, dan z yang bernilai 0. Terdapat missing value pada kolom x sebanyak 3, y sebanyak 2, dan z sebanyak 10. 
 
-![image table](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Outlier%20table.png)
+   **Tabel 4. Missing Value Kolom x, y, z**
+   |        | carat | cut       | color | clarity |	depth | table |	x    | y    | z   |	price |
+   |--------|-------|-----------|-------|---------|-------|-------|------|------|-----|-------|
+   | 8750   |	1.02	| Premium   |	H	    | SI2	    | 59.4	| 61.0	| 6.57 | 6.53 |	0.0 |	4144  |
+   | 39413  |	2.18	| Premium	  | H	    | SI2	    | 59.4	| 60.0	| 8.46 | 8.41 | 0.0	| 15842 |
+   | 92703  |	0.71	| Good	    | F	    | SI1	    | 64.1	| 60.0	| 0.00 | 0.00 |	0.0	| 2130  |
+   | 98719  |	2.17	| Premium	  | H	    | SI2	    | 60.3	| 57.0	| 8.42 | 8.36	| 0.0	| 15923 |
+   | 99624  |	2.20	| Premium	  | I	    | SI2	    | 60.1	| 60.0	| 8.45 | 8.41	| 0.0	| 11221 |
+   | 117161 |	2.20	| Premium	  | F	    | SI2	    | 60.3	| 58.0	| 8.49 | 8.45	| 0.0	| 15188 |
+   | 151690 |	2.18	| Premium	  | I	    | VS2	    | 61.2	| 62.0	| 8.45 | 8.37	| 0.0	| 15701 |
+   | 159429 |	2.18	| Premium	  | H	    | SI2	    | 60.8	| 59.0	| 8.42 | 8.38	| 0.0	| 13938 |
+   | 170318 |	0.71	| Good	    | D	    | VS2	    | 64.1	| 60.0	| 0.00 | 0.00	| 0.0	| 910   |
+   | 178000 |	0.71	| Very Good |	F	    | SI2	    | 62.0	| 60.0	| 0.00 | 6.71	| 0.0	| 2130  |
 
-3. Fitur X
+   Terlihat bahwa pada untuk z bernilai 0, ternyata juga terdapat seluruh nilai 0 pada kolom x dan y. Oleh karena itu, baris-baris ini akan dihapus. Data setelah dihapus menjadi `193563` yang sebelumnya `193573`.
 
-![image x](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Outlier%20x.png)
+5. **Memeriksa Data Duplikat**
 
-Berdasarkan visualisasi boxplot di atas, dapat terlihat bahwa ketiga fitur dataset, yakni `carat`, `table`, dan `x` memiliki outliers. Untuk menangani outliers akan digunakan metode IQR (_Inter Quartile Range_). IQR dihitung dengan mengurangkan kuartil ketiga (Q3) dari kuartil pertama (Q1) sebagaimana rumus berikut.
+   ```python
+   # Menghitung jumlah baris yang duplikat dalam Dataset
+   jumlah_duplikat = gemstone.duplicated().sum()
+   print("\nJumlah Duplikat:", jumlah_duplikat)
+   ```
+   Jumlah Duplikat: 0
 
-```
-Batas bawah = Q1 - 1.5 * IQR
-Batas atas = Q3 + 1.5 * IQR
-```
+   Terlihat bahwa tidak ada data duplikat pada dataset.
+   
 
-Setelah menggunakan metode IQR untuk menghilangkan outlier pada dataset jumlah dataset menjadi 168755 yang awalnya adalah 193573.
+6. **Menangani Outliers**
+
+   Outliers merupakan sampel yang nilainya sangat jauh dari cakupan umum data utama, dengan itu kita akan memeriksa apakah terdapat outlier pada kolom-kolom numerik.
+
+   1. Fitur Carat
+   
+   ![image carat](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Outlier%20carat.png)
+
+   2. Fitur Table
+
+   ![image table](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Outlier%20table.png)
+
+   3. Fitur X
+
+   ![image x](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Outlier%20x.png)
+
+   Terlihat bahwa terdapat beberapa outlier pada kolom-kolom di atas bahwa ketiga fitur dataset, yakni `carat`, `table`, dan `x` memiliki outliers. Untuk menangani outliers akan digunakan metode IQR (_Inter Quartile Range_). IQR dihitung dengan mengurangkan kuartil ketiga (Q3) dari kuartil pertama (Q1) sebagaimana rumus berikut.
+
+   $$IQR = Inter Quartile Range$$
+
+   $$IQR = Q3 - Q1$$
+
+   Setelah menggunakan metode IQR untuk menghilangkan outlier pada dataset jumlah dataset menjadi 168755 yang awalnya adalah 193573.
 
 ### EDA - Univariate Analysis
 
@@ -303,6 +364,11 @@ Kesimpulan yang diperoleh dari hasil analisis dan pemodelan machine learning pad
 [2] Data Bridge Market Research. (2024). Global Gemstones Market – Industry Trends and Forecast to 2031. https://www.databridgemarketresearch.com/reports/global-gemstones-market
 
 [3] International Gem Society (IGS). (2023). Gemstone Value and Pricing Factors. https://www.gemsociety.org/article/gemstone-value-factors/
+
+[4] Subramanian, D. (2019). A Simple Introduction to K-Nearest Neighbors Algorithm. Towards Data Science. https://towardsdatascience.com/a-simple-introduction-to-k-nearest-neighbors-algorithm-b3519ed98e
+[5] Wood, T. -.What is a Random Forest?. DeepAI. https://deepai.org/machine-learning-glossary-and-terms/random-forest
+
+[6] Trivusi, "Gradient Boosting: Pengertian, Cara Kerja, dan Kegunaannya", *Trivusi*, 2023. https://www.trivusi.web.id/2023/03/algoritma-gradient-boosting.html
 
 [4] https://www.dicoding.com/academies/319/tutorials/18595
 
