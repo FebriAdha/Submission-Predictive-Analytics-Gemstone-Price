@@ -290,13 +290,11 @@ Berikut hasil uji prediksi menggunakan beberapa harga dari data test.
 |-----|-----|-----|-----|-----|
 | 65114 | 868	| 944.0 | 701.4	| 915.8 |
 
-Terlihat bahwa prediksi model KNN, prediksi model RF, dan prediksi model Bossting adalah $994, $701, dan $915 dari $868. Dari ketiga model, model yang memiliki nilai prediksi meleset sangat kecil adalah model Boosting dan model yang memiliki nilai prediksi meleset sangat besar adalah RF. Hal tersebut sejalan dengan hasil error pada pelatihan model, yaitu nilai error paling kecil adalah nilai error model Boosting dan nilai error paling besar adalah nilai error model RF.
+Terlihat bahwa prediksi model KNN, prediksi model RF, dan prediksi model Bossting adalah $994, $701, dan $915 dari $868. Dari ketiga model, model yang memiliki nilai prediksi meleset sangat kecil adalah model Boosting dan model yang memiliki nilai prediksi meleset sangat besar adalah RF. 
 
-### Kesimpulan
+Kesimpulan yang diperoleh dari hasil analisis dan pemodelan machine learning pada kasus ini adalah model yang digunakan untuk melakukan analisis prediksi harga batu permata menghasilkan tingkat error pada pelatihan model, yaitu nilai error paling kecil adalah nilai error model Boosting dan nilai error paling besar adalah nilai error model RF.
 
-Berdasarkan proyek yang telah dilakukan, maka dapat disimpulkan beberapa hal berikut.
-- Berdasarkan EDA, fitur yang paling berkolerasi dengan harga gemstone adalah berat, lebar, dan panjang.
-- Berdasarkan hasil MSE, model yang memiliki performa terbaik adalah model dengan algoritma _Gradient Boosting_.
+
 
 ## Referensi
 
