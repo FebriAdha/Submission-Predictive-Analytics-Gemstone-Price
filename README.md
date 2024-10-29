@@ -2,30 +2,33 @@
 ![foto Gamstone](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Gemstone.png)
 
 ## Domain Proyek
-Domain yang dipilih untuk proyek machine learning ini adalah Ekonomi dan Bisnis, dengan judul Predictive Analytics: Gemstone Price
+Domain yang dipilih untuk proyek machine learning ini adalah **Ekonomi dan Bisnis**, dengan judul _"Predictive Analytics Gemstone Price"._
 
 ### Latar Belakang
 
-Batu permata (gemstone) merupakan komoditas berharga yang terus mengalami pertumbuhan signifikan di pasar global. Menurut laporan Grand View Research, pasar global batu permata mencapai nilai USD 29.89 miliar pada tahun 2021 dan diproyeksikan tumbuh dengan CAGR 8.9% hingga 2030 [[1]](https://www.grandviewresearch.com/industry-analysis/gemstone-market-report). Namun, penentuan harga batu permata masih menghadapi tantangan karena melibatkan berbagai faktor kompleks seperti berat (carat), kejernihan (clarity), warna (color), dan potongan (cut) [[2]](https://www.gemsociety.org/article/gemstone-value-factors/).
+Batu permata adalah sebuah mineral yang mengendap selama bertahun-tahun yang membuatnya mempunyai nilai harga yang tinggi. Ada beberapa jenis mineral/batuan yang termasuk golongan batu permata (gemstone) contohnya: berlian, rubi, sapphire, giok (jade), dan emerlad (zamrud). Jenis batu mulia dapat dikenali berdasarkan tekstur, motif, dan warnanya [[1]]( https://e-journal.stmik-tegal.ac.id/index.php/batirsi/article/view/41/31). Menurut laporan Data Bridge, ukuran pasar batu permata global dinilai sebesar USD 32,38 miliar pada tahun 2023 dan diproyeksikan mencapai USD 47,48 miliar pada tahun 2031, dengan CAGR sebesar 4,90% selama periode perkiraan tahun 2024 hingga 2031 [[2]](https://www.databridgemarketresearch.com/reports/global-gemstones-market).
 
-The Gemological Institute of America (GIA) melaporkan bahwa sekitar 30% transaksi batu permata mengalami ketidaksesuaian harga akibat penilaian yang subjektif [[3]](https://www.gia.edu/gems-gemology/market-report-2023). Hal ini menunjukkan kebutuhan akan sistem prediksi harga yang lebih akurat dan objektif. Perkembangan teknologi machine learning membuka peluang baru dalam memprediksi harga batu permata dengan lebih presisi, mempertimbangkan berbagai faktor penilaian secara simultan untuk menghasilkan estimasi yang lebih objektif [[4]](https://www.researchgate.net/publication/machine-learning-gemstone-price-prediction).
+Penentuan harga batu permata masih menghadapi tantangan karena melibatkan berbagai faktor kompleks seperti berat (carat), kejernihan (clarity), warna (color), dan potongan (cut) [[3]](https://www.gemsociety.org/article/gemstone-value-factors/). Namun yang ditakutkan dari permasalahan ini banyak pengemar yang membeli batu mulia dengan harga yang overprice dan bila mana ingin dijual kembali harganya terlalu lowerprice. Menyebabkan kerugian bagi pengemar batu maupun penjual batu permata [1].
 
-Dalam konteks Indonesia, industri perhiasan dan batu mulia mencatat pertumbuhan yang signifikan dengan nilai ekspor mencapai USD 2.3 miliar pada tahun 2022 [[5]](https://statistik.kemendag.go.id/export-gems-jewelry). Pengembangan sistem prediksi harga yang akurat dapat mendukung pertumbuhan industri ini dengan memberikan transparansi harga yang lebih baik dan meningkatkan kepercayaan konsumen.
+Berdasarkan permasalahan di atas, maka pada proyek ini akan dibangun suatu model machine learning untuk memprediksi harga pasar Gemstone di masa depan. Dengan adanya model machine learning ini, dapat mendukung pertumbuhan industri ini dengan memberikan transparansi harga yang lebih baik dan meningkatkan kepercayaan konsumen.
 
 ## Business Understandings
 
 ### Problem Statements
 Berdasarkan latar belakang yang telah diuraikan, berikut adalah rumusan masalah yang akan diselesaikan dalam proyek ini:
+- Bagaimana cara melakukan tahap persiapan data sebelum digunakan untuk pelatihan model machine learning?
 - Dari serangkaian fitur yang ada, fitur apa yang paling berpengaruh terhadap harga gemstone?
 - Berapa harga pasar gemstone dengan karakteristik atau fitur tertentu?
 
 ### Goals
 Tujuan dari proyek ini adalah:
+- Untuk melakukan tahap persiapan data atau data preparation, agar data yang digunakan dapat dipakai untuk melatih model machine learning.
 - Mengetahui fitur yang paling berkorelasi dengan harga gamstone.
 - Membuat model machine learning yang dapat memprediksi harga gamstone seakurat mungkin berdasarkan fitur-fitur yang ada.
 
 ### Solution statements
 Untuk mencapai goals yang telah ditetapkan, berikut adalah solusi yang akan diterapkan:
+- Melakukan proses persiapan data dengan model machine learning dari awal hingga selesai, meliputi data Understanding, Exploratory Data Analysis (EDA), modelling, dan evaluation.
 - Membangun model regresi dengan harga gamstone sebagai target.
 - Membuat 3 model, lalu memilih 1 model terbaik yang memiliki tingkat akurasi terbaik berdasarkan metrik Mean Squared Error (MSE).
 
@@ -296,14 +299,13 @@ Berdasarkan proyek yang telah dilakukan, maka dapat disimpulkan beberapa hal ber
 - Berdasarkan hasil MSE, model yang memiliki performa terbaik adalah model dengan algoritma _Gradient Boosting_.
 
 ## Referensi
-[1] Grand View Research. (2022). Gemstone Market Size & Trends Analysis Report, 2022-2030. https://www.grandviewresearch.com/industry-analysis/gemstone-market-report
 
-[2] International Gem Society (IGS). (2023). Gemstone Value and Pricing Factors. https://www.gemsociety.org/article/gemstone-value-factors/
+[1] Firlydani Syifana Putra, "Prediksi Harga Batu Mulia/Gemstone Berdasarkan Karakteristiknya Menggunakan Linear Regression", Jurnal BATIRSI, Vol.6, No.2, Januari 2023. https://e-journal.stmik-tegal.ac.id/index.php/batirsi/article/view/41/31
 
-[3] The Gemological Institute of America (GIA). (2023). Global Gemstone Market Analysis Report. https://www.gia.edu/gems-gemology/market-report-2023
+[2] Data Bridge Market Research. (2024). Global Gemstones Market – Industry Trends and Forecast to 2031. https://www.databridgemarketresearch.com/reports/global-gemstones-market
 
-[4] ResearchGate. (2021). Application of Machine Learning in Gemstone Price Prediction: A Review. https://www.researchgate.net/publication/machine-learning-gemstone-price-prediction
+[3] International Gem Society (IGS). (2023). Gemstone Value and Pricing Factors. https://www.gemsociety.org/article/gemstone-value-factors/
 
-[5] Kementerian Perdagangan RI. (2023). Statistik Ekspor Perhiasan dan Batu Mulia Indonesia. https://statistik.kemendag.go.id/export-gems-jewelry
+[4] https://www.dicoding.com/academies/319/tutorials/18595
 
-[6] https://www.dicoding.com/academies/319/tutorials/18595
+
