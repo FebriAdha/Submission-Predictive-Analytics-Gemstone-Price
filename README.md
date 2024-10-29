@@ -117,7 +117,7 @@ Setelah menggunakan metode IQR untuk menghilangkan outlier pada dataset jumlah d
 
 Gambar 1a. Univariate Analysis (Fitur cut)
 
-Pada Gambar 1a terdapat 5 kategori pada fitur Cut, secara berurutan dari jumlahnya yang paling banyak yaitu: Ideal, Premium, Very Good, Good, dan Fair. Dari data persentase dapat kita simpulkan bahwa lebih dari 70% sampel merupakan diamonds tipe grade tinggi, yaitu grade Ideal dan Premium.
+Pada Gambar 1a terdapat 5 kategori pada fitur Cut, secara berurutan dari jumlahnya yang paling banyak yaitu: Ideal, Premium, Very Good, Good, dan Fair. Dari data persentase dapat kita simpulkan bahwa lebih dari 70% sampel merupakan gemstone tipe grade tinggi, yaitu grade Ideal dan Premium.
 
 ![Univariate Analysis](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Fitur%20color.png)
 
