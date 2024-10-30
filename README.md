@@ -10,7 +10,7 @@ Domain yang dipilih untuk proyek machine learning ini adalah **Ekonomi dan Bisni
 
 Batu permata adalah sebuah mineral yang mengendap selama bertahun-tahun yang membuatnya mempunyai nilai harga yang tinggi. Ada beberapa jenis mineral/batuan yang termasuk golongan batu permata (gemstone) contohnya: berlian, rubi, sapphire, giok (jade), dan emerlad (zamrud). Jenis batu mulia dapat dikenali berdasarkan tekstur, motif, dan warnanya [[1]]( https://e-journal.stmik-tegal.ac.id/index.php/batirsi/article/view/41/31). Menurut laporan Data Bridge, ukuran pasar batu permata global dinilai sebesar USD 32,38 miliar pada tahun 2023 dan diproyeksikan mencapai USD 47,48 miliar pada tahun 2031, dengan CAGR sebesar 4,90% selama periode perkiraan tahun 2024 hingga 2031 [[2]](https://www.databridgemarketresearch.com/reports/global-gemstones-market).
 
-Penentuan harga batu permata masih menghadapi tantangan karena melibatkan berbagai faktor kompleks seperti berat (carat), kejernihan (clarity), warna (color), dan potongan (cut) [[3]](https://www.gemsociety.org/article/gemstone-value-factors/). Namun yang ditakutkan dari permasalahan ini banyak pengemar yang membeli batu mulia dengan harga yang overprice dan bila mana ingin dijual kembali harganya terlalu lowerprice. Menyebabkan kerugian bagi pengemar batu maupun penjual batu permata [1].
+Penentuan harga batu permata masih menghadapi tantangan karena melibatkan berbagai faktor kompleks seperti berat (carat), kejernihan (clarity), warna (color), dan potongan (cut) [[3]](https://www.gemsociety.org/article/gemstone-value-factors/). Namun yang ditakutkan dari permasalahan ini banyak pengemar yang membeli batu mulia dengan harga yang overprice dan bila mana ingin dijual kembali harganya terlalu lowerprice. Menyebabkan kerugian bagi pengemar batu maupun penjual batu permata [[1]]( https://e-journal.stmik-tegal.ac.id/index.php/batirsi/article/view/41/31).
 
 Berdasarkan permasalahan di atas, maka pada proyek ini akan dibangun suatu model machine learning untuk memprediksi harga pasar Gemstone di masa depan. Dengan adanya model machine learning ini, dapat mendukung pertumbuhan industri ini dengan memberikan transparansi harga yang lebih baik dan meningkatkan kepercayaan konsumen.
 
@@ -154,15 +154,15 @@ Kemudian dilakukan proses Exploratory Data Analysis (EDA) yang merupakan proses 
 
    1. Fitur Carat
    
-   ![image carat](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Outlier%20carat.png)
+   ![image carat](https://raw.githubusercontent.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/refs/heads/main/images/Outlier%20carat.png)
 
    2. Fitur Table
 
-   ![image table](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Outlier%20table.png)
+   ![image table](https://raw.githubusercontent.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/refs/heads/main/images/Outlier%20table.png)
 
    3. Fitur X
 
-   ![image x](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Outlier%20x.png)
+   ![image x](https://raw.githubusercontent.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/refs/heads/main/images/Outlier%20x.png)
 
    Terlihat bahwa terdapat beberapa outlier pada kolom-kolom di atas bahwa ketiga fitur dataset, yakni `carat`, `table`, dan `x` memiliki outliers. Untuk menangani outliers akan digunakan metode IQR (_Inter Quartile Range_). IQR dihitung dengan mengurangkan kuartil ketiga (Q3) dari kuartil pertama (Q1) sebagaimana rumus berikut.
 
@@ -178,19 +178,19 @@ Kemudian dilakukan proses Exploratory Data Analysis (EDA) yang merupakan proses 
 
    - Categorical Features
 
-     ![Univariate Analysis)](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Fitur%20cut.png)
+     ![Univariate Analysis)](https://raw.githubusercontent.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/refs/heads/main/images/Fitur%20cut.png)
      
      Gambar 1. Univariate Analysis (Fitur cut)
 
      Pada Gambar 1 terdapat 5 kategori pada fitur Cut, secara berurutan dari jumlahnya yang paling banyak yaitu: Ideal, Premium, Very Good, Good, dan Fair. Dari data persentase dapat kita simpulkan bahwa lebih dari 70% sampel merupakan gemstone tipe grade tinggi, yaitu grade Ideal dan Premium.
 
-     ![Univariate Analysis](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Fitur%20color.png)
+     ![Univariate Analysis](https://raw.githubusercontent.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/refs/heads/main/images/Fitur%20color.png)
 
      Gambar 2. Grafik Univariate Distribusi (Fitur color)
 
      Pada Gambar 2 terdapat urutan kategori warna dari yang paling buruk hingga yang paling bagus adalah J, I, H, G, F, E, dan D. Dari grafik di atas, dapat disimpulkan bahwa sebagian besar grade berada pada grade menengah, yaitu G, F, H.
 
-     ![Univariate Analysis](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Fitur%20clarity.png)
+     ![Univariate Analysis](https://raw.githubusercontent.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/refs/heads/main/images/Fitur%20clarity.png)
 
      Gambar 3. Grafik Univariate Distribusi (Fitur clarity)
 
@@ -198,7 +198,7 @@ Kemudian dilakukan proses Exploratory Data Analysis (EDA) yang merupakan proses 
 
    - Numerical Features 
 
-     ![Univariate Analysis](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Univariate%20Analysis%20(Data%20Numerik).png)
+     ![Univariate Analysis](https://raw.githubusercontent.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/refs/heads/main/images/Univariate%20Analysis%20(Data%20Numerik).png)
 
      Gambar 4. Grafik Univariate Distribusi (Fitur Numerikal)
 
@@ -217,7 +217,7 @@ Kemudian dilakukan proses Exploratory Data Analysis (EDA) yang merupakan proses 
 
      Melakukan pengecekan rata-rata harga terhadap masing-masing fitur kategori, yaitu cut, color, dan clarity untuk mengetahui pengaruh fitur tersebut terhadap harga.
 
-     ![Multivariate Analysis](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Multivariate%20Analysis%20(Data%20Categori).jpeg)
+     ![Multivariate Analysis](https://raw.githubusercontent.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/refs/heads/main/images/Multivariate%20Analysis%20(Data%20Categori).jpeg)
 
      Gambar 5. Grafik Multivariate (Fitur Kategorikal)
 
@@ -232,7 +232,7 @@ Kemudian dilakukan proses Exploratory Data Analysis (EDA) yang merupakan proses 
   
      Melakukan pengecekan rata-rata harga terhadap masing-masing fitur numerik, yaitu carat, depth, table, x, y, dan z untuk mengetahui pengaruh fitur tersebut terhadap harga.
 
-     ![Multivariate Aanlysis](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Multivariate%20Analysis%20(Data%20Numerik).png)
+     ![Multivariate Aanlysis](https://raw.githubusercontent.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/refs/heads/main/images/Multivariate%20Analysis%20(Data%20Numerik).png)
 
      Gambar 6. Grafik Multivariate (Fitur Numerikal)
 
@@ -240,7 +240,7 @@ Kemudian dilakukan proses Exploratory Data Analysis (EDA) yang merupakan proses 
 
 9. **Correlation Matrix**
 
-   ![Multivariate Analysis](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Analysis%20Matrik%20Korelasi.png)
+   ![Multivariate Analysis](https://raw.githubusercontent.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/refs/heads/main/images/Analysis%20Matrik%20Korelasi.png)
 
    Gambar 7. Diagram Heatmap Correlation Matrik (Fitur Numerikal)
 
@@ -251,11 +251,11 @@ Kemudian dilakukan proses Exploratory Data Analysis (EDA) yang merupakan proses 
    Tabel 5. Pengecekan dataset setelah menghapus fitur depth
    |   | carat | cut       | color | clarity | table | x    | y    | z    | price |
    |---|-------|-----------|-------|---------|-------|------|------|------|-------|
-   | 2 | 0.70  | Ideal     |	G  | VS1  	 | 57.0	 | 5.69 | 5.73 | 3.50 | 2772  |
-   | 3 | 0.32  | Ideal     |	G  | VS1	 | 56.0	 | 4.38 | 4.41 | 2.71 | 666   |
-   | 5 | 1.51  | Very Good |	J  | SI1	 | 58.0	 | 7.34 | 7.29 | 4.59 | 7506  |
-   | 6 | 0.74  | Ideal     |	E  | VS2	 | 57.0	 | 5.76 | 5.79 | 3.57 | 3229  |
-   | 7 | 1.34  | Premium   |	G  | SI2	 | 57.0	 | 7.00 | 7.05 | 4.38 | 6224  |
+   | 2 | 0.70  | Ideal     |	G    | VS1  	 | 57.0	 | 5.69 | 5.73 | 3.50 | 2772  |
+   | 3 | 0.32  | Ideal     |	G    | VS1	   | 56.0	 | 4.38 | 4.41 | 2.71 | 666   |
+   | 5 | 1.51  | Very Good |	J    | SI1	   | 58.0	 | 7.34 | 7.29 | 4.59 | 7506  |
+   | 6 | 0.74  | Ideal     |	E    | VS2	   | 57.0	 | 5.76 | 5.79 | 3.57 | 3229  |
+   | 7 | 1.34  | Premium   |	G    | SI2	   | 57.0	 | 7.00 | 7.05 | 4.38 | 6224  |
 
 ## Data Preparation
 
@@ -265,7 +265,7 @@ Pada tahap persiapan data atau *data preparation* dilakukan beberapa proses, yai
 
    Proses encoding fitur kategori dilakukan dengan menggunakan teknik one-hot-encoding dari library scikit-learn. Teknik ini berfungsi untuk mendapatkan fitur baru yang sesuai sehingga dapat mewakili setiap fitur kategori. Pada proyek ini terdapat 3 fitur kategori, yaitu "cut", "color", "clarity". Proses encoding dilakukan dengan fitur get_dummies. Berikut output nya :
 
-   ![image](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/encoding%20fitur%20categori.png)
+   ![image](https://raw.githubusercontent.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/refs/heads/main/images/encoding%20fitur%20categori.png)
 
    Gambar 8. Enconding Fitur Kategori (cut, color, clarity)
 
@@ -292,13 +292,13 @@ Pada tahap persiapan data atau *data preparation* dilakukan beberapa proses, yai
    |       | carat       | table       | dimension   |
    |-------|-------------|-------------|-------------|
    | count | 151879.0000 | 151879.0000 | 151879.0000 |
-   | mean  | -0.0000	 | 0.0000      | 0.0000      |
-   | std   | 1.0000	     | 1.0000	   | 1.0000      |
-   | min   | -1.3734	 | -2.3493	   | -1.8553     |
-   | 25%   | -0.9367	 | -0.5833	   | -0.9664     |
-   | 50%   | -0.3089	 | 0.0054	   | -0.1388     |
-   | 75%   | 0.8375	     | 0.5941	   | 0.9036      |
-   | max   | 3.4033	     | 2.3601	   | 2.6412      |
+   | mean  | -0.0000	   | 0.0000      | 0.0000      |
+   | std   | 1.0000	     | 1.0000	     | 1.0000      |
+   | min   | -1.3734	   | -2.3493	   | -1.8553     |
+   | 25%   | -0.9367	   | -0.5833	   | -0.9664     |
+   | 50%   | -0.3089	   | 0.0054	     | -0.1388     |
+   | 75%   | 0.8375	     | 0.5941	     | 0.9036      |
+   | max   | 3.4033	     | 2.3601	     | 2.6412      |
 
    Dapat dilihat bahwa setelah proses standarisasi sekarang nilai mean = 0 dan standar deviasi = 1.
 
@@ -382,15 +382,15 @@ Cara kerja Metrik MSE adalah dengan menghitung selisih hasil prediksi dengan nil
 Berikut adalah tabel nilai MSE pada setiap model dengan data latih dan data uji.
 
 Tabel 7. Nilai Evaluasi Model _Machine Learning_
-|	       | train      | test       |
+|	         | train      | test       |
 |----------|------------|------------|
-| KNN	   | 158.060099 | 188.027968 |
+| KNN	     | 158.060099 | 188.027968 |
 | RF       | 184.881839 | 189.772913 |
 | Boosting | 133.044841 | 146.840974 |
 
 Untuk memudahkan dalam mengevaluasi model kita akan melakukan visualisasi hasil menggunakan bar chart sebagai berikut.
 
-![image](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/barplot%20MSE.png)
+![image](https://raw.githubusercontent.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/refs/heads/main/images/barplot%20MSE.png)
 
 Gambar 10. Grafik Evaluasi Model Machine Learning
 
@@ -420,6 +420,7 @@ Kesimpulan yang diperoleh dari hasil analisis dan pemodelan _Machine Learning_ u
 [3] International Gem Society (IGS). (2023). Gemstone Value and Pricing Factors. https://www.gemsociety.org/article/gemstone-value-factors/
 
 [4] Subramanian, D. (2019). A Simple Introduction to K-Nearest Neighbors Algorithm. Towards Data Science. https://towardsdatascience.com/a-simple-introduction-to-k-nearest-neighbors-algorithm-b3519ed98e
+
 [5] Wood, T. -.What is a Random Forest?. DeepAI. https://deepai.org/machine-learning-glossary-and-terms/random-forest
 
 [6] Trivusi, "Gradient Boosting: Pengertian, Cara Kerja, dan Kegunaannya", *Trivusi*, 2023. https://www.trivusi.web.id/2023/03/algoritma-gradient-boosting.html
