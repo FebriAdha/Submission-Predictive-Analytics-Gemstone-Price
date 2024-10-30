@@ -1,6 +1,6 @@
 # Laporan Proyek Machine Learning - Febri Isthifa Adha
 
-![foto Gamstone](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/57c8030e7c2d3b4ee7ceeeb6dc26e0c886893d4f/images/Gemstone.png)
+![foto Gamstone](https://raw.githubusercontent.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/refs/heads/main/images/Gemstone.png)
 
 ## Domain Proyek
 
@@ -19,19 +19,19 @@ Berdasarkan permasalahan di atas, maka pada proyek ini akan dibangun suatu model
 ### Problem Statements
 
 Berdasarkan latar belakang yang telah diuraikan, berikut adalah rumusan masalah yang akan diselesaikan dalam proyek ini:
-- Dari serangkaian fitur yang ada, fitur apa yang paling berpengaruh terhadap harga gemstone?
-- Berapa harga pasar gemstone dengan karakteristik atau fitur tertentu?
+- Fitur apa saja yang paling berpengaruh terhadap harga batu permata (gemstone)?
+- Bagaimana model dapat memprediksi harga pasar batu permata berdasarkan fitur-fitur yang ada?
 
 ### Goals
 
 Tujuan dari proyek ini adalah:
-- Mengetahui fitur yang paling berkorelasi dengan harga gamstone.
-- Membuat model machine learning yang dapat memprediksi harga gamstone seakurat mungkin berdasarkan fitur-fitur yang ada.
+- Mengidentifikasi fitur-fitur yang paling berkorelasi dengan harga batu permata.
+- Membangun model machine learning yang dapat memprediksi harga batu permata secara akurat berdasarkan fitur-fitur yang ada.
 
 ### Solution statements
 
 Untuk mencapai goals yang telah ditetapkan, berikut adalah solusi yang akan diterapkan:
-1. Membangun model regresi dengan harga gamstone sebagai target.
+1. Menggunakan analisis regresi untuk mengetahui fitur-fitur yang paling berpengaruh terhadap harga batu permata.
 2. Membuat model _machine learning_ untuk mendapatkan model yang paling baik dari 3 algoritma yang berbeda dan kemudian akan dilakukan evaluasi model untuk membandingkan performa model yang terbaik. Algoritma yang akan digunakan, yaitu Algoritma K-Nearest Neighbor, Algoritma Random Forest, dan Boosting Algorithm.
     - **Algoritma K-Nearest Neighbor**
 
@@ -59,7 +59,7 @@ Kemudian dilakukan proses Exploratory Data Analysis (EDA) yang merupakan proses 
 
    Berikut adalah informasi variabel dari dataset Gemstone Price:
 
-   **Tabel 1. Deskripsi Variabel**
+   Tabel 1. Deskripsi Variabel
    | # | Column  | Non-Null Count  | Dtype   |
    |---|---------|-----------------|---------|  
    | 0 | carat   | 193573 non-null | float64 |
@@ -77,7 +77,7 @@ Kemudian dilakukan proses Exploratory Data Analysis (EDA) yang merupakan proses 
 
    Berikut merupakan arti dari masing-masing variabel beserta nilai-nilainya.
 
-   **Tabel 2. Variabel**
+   Tabel 2. Variabel beserta nilainya
    | Variabel | Keterangan                                                     | Nilai                                            |
    |----------|----------------------------------------------------------------|--------------------------------------------------|
    | carat    | Berat batu permata dalam satuan karat                          |  0.2 - 5.01                                      |
@@ -94,7 +94,7 @@ Kemudian dilakukan proses Exploratory Data Analysis (EDA) yang merupakan proses 
    
    Selanjutnya, kita akan melihat deskripsi statistik dari data yang dimiliki.
 
-   **Tabel 3. Deskripsi Statistik Data**
+   Tabel 3. Deskripsi Statistik Data
    |       | carat         | depth         | table         | x             | y             | z             | price         |
    |-------|---------------|---------------|---------------|---------------|---------------|---------------|---------------|
    | count | 193573.000000 | 193573.000000 | 193573.000000 | 193573.000000 | 193573.000000 | 193573.000000 | 193573.000000 |
@@ -120,7 +120,7 @@ Kemudian dilakukan proses Exploratory Data Analysis (EDA) yang merupakan proses 
 
    Dilakukan pengecekan nilai yang hilang atau missing valie pada kolom x, y, dan z yang bernilai 0. Terdapat missing value pada kolom x sebanyak 3, y sebanyak 2, dan z sebanyak 10. 
 
-   **Tabel 4. Missing Value Kolom x, y, z**
+   Tabel 4. Missing Value Kolom x, y, z
    |        | carat | cut       | color | clarity |	depth | table |	x    | y    | z   |	price |
    |--------|-------|-----------|-------|---------|-------|-------|------|------|-----|-------|
    | 8750   |	1.02	| Premium   |	H	    | SI2	    | 59.4	| 61.0	| 6.57 | 6.53 |	0.0 |	4144  |
@@ -136,7 +136,7 @@ Kemudian dilakukan proses Exploratory Data Analysis (EDA) yang merupakan proses 
 
    Terlihat bahwa pada untuk z bernilai 0, ternyata juga terdapat seluruh nilai 0 pada kolom x dan y. Oleh karena itu, baris-baris ini akan dihapus. Data setelah dihapus menjadi `193563` yang sebelumnya `193573`.
 
-5. **Memeriksa Data Duplikat**
+4. **Memeriksa Data Duplikat**
 
    ```python
    # Menghitung jumlah baris yang duplikat dalam Dataset
@@ -148,7 +148,7 @@ Kemudian dilakukan proses Exploratory Data Analysis (EDA) yang merupakan proses 
    Terlihat bahwa tidak ada data duplikat pada dataset.
    
 
-6. **Menangani Outliers**
+5. **Menangani Outliers**
 
    Outliers merupakan sampel yang nilainya sangat jauh dari cakupan umum data utama, dengan itu kita akan memeriksa apakah terdapat outlier pada kolom-kolom numerik.
 
@@ -172,189 +172,243 @@ Kemudian dilakukan proses Exploratory Data Analysis (EDA) yang merupakan proses 
 
    Setelah menggunakan metode IQR untuk menghilangkan outlier pada dataset jumlah dataset menjadi 168755 yang awalnya adalah 193573.
 
-### EDA - Univariate Analysis
+6. **Univariate Analysis**
 
-![Univariate Analysis)](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Fitur%20cut.png)
+   Proses univariate data analysis pada masing-masing fitur kategorial dan numerik.
 
-Gambar 1a. Univariate Analysis (Fitur cut)
+   - Categorical Features
 
-Pada Gambar 1a terdapat 5 kategori pada fitur Cut, secara berurutan dari jumlahnya yang paling banyak yaitu: Ideal, Premium, Very Good, Good, dan Fair. Dari data persentase dapat kita simpulkan bahwa lebih dari 70% sampel merupakan gemstone tipe grade tinggi, yaitu grade Ideal dan Premium.
+     ![Univariate Analysis)](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Fitur%20cut.png)
+     
+     Gambar 1. Univariate Analysis (Fitur cut)
 
-![Univariate Analysis](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Fitur%20color.png)
+     Pada Gambar 1 terdapat 5 kategori pada fitur Cut, secara berurutan dari jumlahnya yang paling banyak yaitu: Ideal, Premium, Very Good, Good, dan Fair. Dari data persentase dapat kita simpulkan bahwa lebih dari 70% sampel merupakan gemstone tipe grade tinggi, yaitu grade Ideal dan Premium.
 
-Gambar 1b. Univariate Analysis (Fitur color)
+     ![Univariate Analysis](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Fitur%20color.png)
 
-Pada Gambar 1b terdapat urutan kategori warna dari yang paling buruk hingga yang paling bagus adalah J, I, H, G, F, E, dan D. Dari grafik di atas, dapat disimpulkan bahwa sebagian besar grade berada pada grade menengah, yaitu G, F, H.
+     Gambar 2. Grafik Univariate Distribusi (Fitur color)
 
-![Univariate Analysis](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Fitur%20clarity.png)
+     Pada Gambar 2 terdapat urutan kategori warna dari yang paling buruk hingga yang paling bagus adalah J, I, H, G, F, E, dan D. Dari grafik di atas, dapat disimpulkan bahwa sebagian besar grade berada pada grade menengah, yaitu G, F, H.
 
-Gambar 1c. Univariate Analysis (Fitur clarity)
+     ![Univariate Analysis](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Fitur%20clarity.png)
 
-Pada Gambar 1c fitur Clarity terdiri dari 8 kategori dari yang paling buruk ke yang paling baik, yaitu: I1, SI2, SI1, VS2, VS1, VVS2, VVS1, dan IF.
+     Gambar 3. Grafik Univariate Distribusi (Fitur clarity)
 
-1. `IF` - Internally Flawless 
-2. `VVS2` - Very Very Slight Inclusions 
-3. `VVS1` - Very Very Slight Inclusions 
-4. `VS1` - Very Slight Inclusions
-5. `VS2` - Very Slight Inclusions
-6. `SI2` - Slight Inclusions
-7. `SI1` - Slight Inclusions
-8. `I1` - Imperfect
+     Pada Gambar 3 fitur Clarity terdiri dari 8 kategori dari yang paling buruk ke yang paling baik, yaitu: I1, SI2, SI1, VS2, VS1, VVS2, VVS1, dan IF. Dari grafik dapat disimpulkan bahwa sebagian besar fitur merupakan grade rendah, yaitu SI1, SI2, dan VS2.
 
-Dari grafik dapat disimpulkan bahwa sebagian besar fitur merupakan grade rendah, yaitu SI1, SI2, dan VS2.
+   - Numerical Features 
 
-![Univariate Analysis](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Univariate%20Analysis%20(Data%20Numerik).png)
+     ![Univariate Analysis](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Univariate%20Analysis%20(Data%20Numerik).png)
 
-Gambar 1d. Univariat Analysis (Data Numerik) 
+     Gambar 4. Grafik Univariate Distribusi (Fitur Numerikal)
 
-Berdasarkan Gambar 1d, dapat diamati histogram untuk variabel "price" yang merupakan fitur target (label). Dari histogram "price", kita bisa memperoleh beberapa informasi, antara lain:
+     Berdasarkan Gambar 4, dapat diamati histogram untuk variabel "price" yang merupakan fitur target (label). Dari histogram "price", kita bisa memperoleh beberapa informasi, antara lain:
 
-- Sebagian besar gemstone memiliki harga di bawah $4000, dengan puncak frekuensi pada kisaran harga yang lebih rendah.
-- Rentang harga gemstone cukup luas, mulai dari ratusan dolar Amerika hingga sekitar $12000.
-- Distribusi harga berlian miring ke kanan (right-skewed), menunjukkan bahwa meskipun sebagian besar berlian dijual dengan harga lebih rendah, terdapat sejumlah berlian dengan harga yang jauh lebih tinggi.
-- Lebih dari setengah gemstone memiliki harga di bawah $2500, menunjukkan adanya kecenderungan harga yang lebih terjangkau pada sebagian besar data.
+     - Sebagian besar gemstone memiliki harga di bawah $4000, dengan puncak frekuensi pada kisaran harga yang lebih rendah.
+     - Rentang harga gemstone cukup luas, mulai dari ratusan dolar Amerika hingga sekitar $12000.
+     - Distribusi harga berlian miring ke kanan (right-skewed), menunjukkan bahwa meskipun sebagian besar berlian dijual dengan harga lebih rendah, terdapat sejumlah berlian dengan harga yang jauh lebih tinggi.
+     - Lebih dari setengah gemstone memiliki harga di bawah $2500, menunjukkan adanya kecenderungan harga yang lebih terjangkau pada sebagian besar data.
 
-### EDA - Multivariate Analysis
+7. **Multivariate Analysis**
 
-![Multivariate Analysis](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Multivariate%20Analysis%20(Data%20Categori).jpeg)
-Gambar 2a. Multivariate Analysis (Data Categorical)
+   Proses multivariate data analysis pada masing-masing fitur kategorial dan numerik.
 
-Dengan mengamati Gambar 2a, memiliki rata-rata harga relatif terhadap data kategori, kita memperoleh _insight_ sebagai berikut:
+   - Categorical Features
 
-- Pada fitur 'cut', rata-rata harga berlian berada dalam rentang yang mirip, yaitu antara 2500 hingga 4000. Grade tertinggi seperti "Ideal" justru memiliki harga rata-rata lebih rendah dibandingkan dengan grade lainnya seperti "Fair." Hal ini menunjukkan bahwa fitur "cut" memiliki pengaruh yang kecil terhadap variasi harga gemstone.
-- Pada fitur 'color', terdapat kecenderungan bahwa harga rata-rata berlian lebih tinggi pada grade warna yang lebih rendah, seperti "I" dan "J," sementara grade warna yang lebih tinggi seperti "E" memiliki harga yang lebih rendah. Ini menunjukkan bahwa pengaruh warna terhadap harga berlian juga relatif rendah.
-- Pada fitur 'clarity', gemstone dengan grade clarity lebih rendah, seperti "SI2" dan "I1," cenderung memiliki harga yang lebih tinggi dibandingkan grade clarity yang lebih tinggi seperti "IF." Ini mengindikasikan bahwa kejernihan berlian tidak selalu berkorelasi positif dengan harga, sehingga fitur "clarity" memiliki pengaruh yang rendah terhadap harga gemstone.
-- Kesimpulan akhir, fitur kategori seperti "cut," "color," dan "clarity" memiliki pengaruh yang rendah terhadap harga gemstone.
+     Melakukan pengecekan rata-rata harga terhadap masing-masing fitur kategori, yaitu cut, color, dan clarity untuk mengetahui pengaruh fitur tersebut terhadap harga.
 
-![Multivariate Aanlysis](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Multivariate%20Analysis%20(Data%20Numerik).png)
+     ![Multivariate Analysis](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Multivariate%20Analysis%20(Data%20Categori).jpeg)
 
-Gambar 2b. Multivariate Analysis (Data Numerical)
+     Gambar 5. Grafik Multivariate (Fitur Kategorikal)
 
-Berdasarkan Gambar 2b, fokus pada relasi antara semua fitur numerik dengan fitur target yaitu ‘price’. Pada pola sebaran data grafik pairplot terlihat ‘carat’, ‘x’, ‘y’, dan ‘z’ memiliki korelasi yang tinggi dengan fitur "price". Sedangkan kedua fitur lainnya yaitu 'depth' dan 'table' terlihat memiliki korelasi yang lemah karena sebarannya tidak membentuk pola.
+     Dengan mengamati Gambar 5, memiliki rata-rata harga relatif terhadap data kategori, kita memperoleh _insight_ sebagai berikut:
 
-![Multivariate Analysis](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Analysis%20Matrik%20Korelasi.png)
+     - Pada fitur 'cut', rata-rata harga berlian berada dalam rentang yang mirip, yaitu antara 2500 hingga 4000. Grade tertinggi seperti "Ideal" justru memiliki harga rata-rata lebih rendah dibandingkan dengan grade lainnya seperti "Fair." Hal ini menunjukkan bahwa fitur "cut" memiliki pengaruh yang kecil terhadap variasi harga gemstone.
+     - Pada fitur 'color', terdapat kecenderungan bahwa harga rata-rata berlian lebih tinggi pada grade warna yang lebih rendah, seperti "I" dan "J," sementara grade warna yang lebih tinggi seperti "E" memiliki harga yang lebih rendah. Ini menunjukkan bahwa pengaruh warna terhadap harga berlian juga relatif rendah.
+     - Pada fitur 'clarity', gemstone dengan grade clarity lebih rendah, seperti "SI2" dan "I1," cenderung memiliki harga yang lebih tinggi dibandingkan grade clarity yang lebih tinggi seperti "IF." Ini mengindikasikan bahwa kejernihan berlian tidak selalu berkorelasi positif dengan harga, sehingga fitur "clarity" memiliki pengaruh yang rendah terhadap harga gemstone.
+     - Kesimpulan akhir, fitur kategori seperti "cut," "color," dan "clarity" memiliki pengaruh yang rendah terhadap harga gemstone.
+    
+   - Numerical Features
+  
+     Melakukan pengecekan rata-rata harga terhadap masing-masing fitur numerik, yaitu carat, depth, table, x, y, dan z untuk mengetahui pengaruh fitur tersebut terhadap harga.
 
-Gambar 2c. Analisis Matriks Korelasi
+     ![Multivariate Aanlysis](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Multivariate%20Analysis%20(Data%20Numerik).png)
 
-Berdasarkan Gambar 2c, fitur 'carat', 'x', 'y', dan 'z' memiliki skor korelasi yang besar (diatas 0.9) dengan fitur target 'price'. Dimana, fitur 'price' berkolerasi tinggi dengan keempat fitur tersebut. Sementara fitur 'depth' memiliki korelasi yang sangat kecil (0.05). Sehingga fitur 'depth' dapat dihapus. 
+     Gambar 6. Grafik Multivariate (Fitur Numerikal)
+
+     Berdasarkan Gambar 6, fokus pada relasi antara semua fitur numerik dengan fitur target yaitu ‘price’. Pada pola sebaran data grafik pairplot terlihat ‘carat’, ‘x’, ‘y’, dan ‘z’ memiliki korelasi yang tinggi dengan fitur "price". Sedangkan kedua fitur lainnya yaitu 'depth' dan 'table' terlihat memiliki korelasi yang lemah karena sebarannya tidak membentuk pola.
+
+9. **Correlation Matrix**
+
+   ![Multivariate Analysis](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Analysis%20Matrik%20Korelasi.png)
+
+   Gambar 7. Diagram Heatmap Correlation Matrik (Fitur Numerikal)
+
+   Berdasarkan Gambar 7, fitur 'carat', 'x', 'y', dan 'z' memiliki skor korelasi yang besar (diatas 0.9) dengan fitur target 'price'. Dimana, fitur 'price' berkolerasi tinggi dengan keempat fitur tersebut. Sementara fitur 'depth' memiliki korelasi yang sangat kecil (0.05). Sehingga fitur 'depth' dapat dihapus.
+
+   Menghapus fitur depth pada dataset karena memiliki korelasi yang rendah terhadap fitur price.
+
+   Tabel 5. Pengecekan dataset setelah menghapus fitur depth
+   |   | carat | cut       | color | clarity | table | x    | y    | z    | price |
+   |---|-------|-----------|-------|---------|-------|------|------|------|-------|
+   | 2 | 0.70  | Ideal     |	G  | VS1  	 | 57.0	 | 5.69 | 5.73 | 3.50 | 2772  |
+   | 3 | 0.32  | Ideal     |	G  | VS1	 | 56.0	 | 4.38 | 4.41 | 2.71 | 666   |
+   | 5 | 1.51  | Very Good |	J  | SI1	 | 58.0	 | 7.34 | 7.29 | 4.59 | 7506  |
+   | 6 | 0.74  | Ideal     |	E  | VS2	 | 57.0	 | 5.76 | 5.79 | 3.57 | 3229  |
+   | 7 | 1.34  | Premium   |	G  | SI2	 | 57.0	 | 7.00 | 7.05 | 4.38 | 6224  |
 
 ## Data Preparation
 
-Data preparation merupakan salah satu tahapan yang penting dalam proses pengembangan model machine learning. Pada tahapan ini akan dilakukan proses transformasi pada data sehingga menjadi bentuk yang cocok untuk proses pemodelan.
+Pada tahap persiapan data atau *data preparation* dilakukan beberapa proses, yaitu *encoding* pada fitur kategori, reduksi dimensi dengan menggunakan Principal Component Analysis (PCA), Train Test Split, dan proses standarisasi data.
 
-Pada proyek ini tahap Data Preparation yang dilakukan diantaranya sebagai berikut :
+1. **Encoding Fitur Kategori.**
 
-**A. Encoding Fitur Kategori.**
+   Proses encoding fitur kategori dilakukan dengan menggunakan teknik one-hot-encoding dari library scikit-learn. Teknik ini berfungsi untuk mendapatkan fitur baru yang sesuai sehingga dapat mewakili setiap fitur kategori. Pada proyek ini terdapat 3 fitur kategori, yaitu "cut", "color", "clarity". Proses encoding dilakukan dengan fitur get_dummies. Berikut output nya :
 
-Proses encoding fitur kategori dilakukan dengan menggunakan teknik one-hot-encoding dari library scikit-learn. Teknik ini berfungsi untuk mendapatkan fitur baru yang sesuai sehingga dapat mewakili setiap fitur kategori. Pada proyek ini terdapat 3 fitur kategori, yaitu "cut", "color", "clarity". Proses encoding dilakukan dengan fitur get_dummies. Berikut output nya :
+   ![image](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/encoding%20fitur%20categori.png)
 
-![image](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/encoding%20fitur%20categori.png)
+   Gambar 8. Enconding Fitur Kategori (cut, color, clarity)
 
-**B. Reduksi Dimensi dengan PCA.**
+3. **Reduksi Dimensi dengan PCA.**
 
-Principal Component Analysis (PCA) adalah teknik statistik yang digunakan untuk mereduksi dimensi data dengan cara mengubah data asli ke dalam himpunan fitur baru yang tidak berkorelasi, yang disebut sebagai principal components. Tujuannya adalah untuk mempertahankan sebanyak mungkin variabilitas dalam data asli dengan menggunakan lebih sedikit dimensi.
+   Proses persiapan data atau _data preparation_ dengan teknik reduksi dimensi atau _dimension reduction_ merupakan teknik mengurangi jumlah fitur dengan tetap mempertahankan informasi pada data. Teknik pengurangan dimensi yang digunakan dalam kasus ini adalah Principal Component Analysis (PCA) untuk mereduksi dimensi, mengekstraksi fitur, dan mentransformasi data dari "n-dimensional space" ke dalam sistem berkoordinat baru dengan dimensi m, di mana m lebih kecil dari n.
 
-**C. Train Test Split**
+   ![image](https://raw.githubusercontent.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/refs/heads/main/images/Reduksi%20Dimensi%20PCA.png)
 
-Teknik ini dilakukan untuk membagi dataset menjadi dua bagian, yaitu data latih dan data uji. data latih akan digunakan untuk melatih model sedangkan data uji akan digunakan untuk evaluasi model. Hal tersebut perlu diterapkan agar model yang telah dilatih dapat diuji menggunakan data yang belum pernah dianalisa oleh model. Langkah-langkah yang dilakukan dalam menerapkan teknik ini adalah sebagai berikut.
+   Gambar 9. Grafik Fitur x, y, dan z
 
-- Membagi dataset terlebih dahulu menjadi data y sebagai data target dan data X sebagai data fitur.
-- Membagi y dan X menjadi data latih dan data uji dengan rasio 90 : 10. Rasio tersebut dilakukan mengingat jumlah dataset yang besar setelah data cleaning yaitu sekitar 90.000. Pembagian dataset dilakukan dengan memanfaatkan library train_test_split.
-- Terakhir, mengecek masing-masing ukuran keseluruhan dataset, X, dan y untuk memastikan pembagian dataset berhasil diterapkan. Dari 168755 baris keseluruhan dataset setelah melalui tahap data cleaning, terdapat 151879 baris merupakan data latih dan 16876 baris merupakan data uji.
+   Hasil proporsi informasi dari fitur x, y, dan z dengan menggunakan Principal Component Analysis (PCA), yaitu
+   `array([0.999, 0.001, 0.   ])`
 
-![Standarisasi](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Standarisasi.png)
+5. **Train Test Split**
 
-Dapat dilihat bahwa setelah proses standarisasi sekarang nilai mean = 0 dan standar deviasi = 1.
+   Teknik ini dilakukan untuk membagi dataset menjadi dua bagian, yaitu data latih dan data uji. data latih akan digunakan untuk melatih model sedangkan data uji akan digunakan untuk evaluasi model. Hal tersebut perlu diterapkan agar model yang telah dilatih dapat diuji menggunakan data yang belum pernah dianalisa oleh model. Proses pembagian dataset menjadi data latih dan data uji dengan rasio perbandingan data latih dan data uji, yaitu 90 : 10. Terdapat 168755 total sampel data dalam dataset, sedangkan untuk total sampel data latih sebanyak 151879 data dan total sampel data uji sebanyak 16876 data.
+
+6. **Standarisasi**
+
+   Proses standarisasi fitur numerik, yaitu carat dan dimension menggunakan StandardScaler sehingga fitur data menjadi bentuk yang lebih mudah diolah oleh model machine learning.
+   
+   Tabel 6. Standarisasi Fitur Numerik
+   |       | carat       | table       | dimension   |
+   |-------|-------------|-------------|-------------|
+   | count | 151879.0000 | 151879.0000 | 151879.0000 |
+   | mean  | -0.0000	 | 0.0000      | 0.0000      |
+   | std   | 1.0000	     | 1.0000	   | 1.0000      |
+   | min   | -1.3734	 | -2.3493	   | -1.8553     |
+   | 25%   | -0.9367	 | -0.5833	   | -0.9664     |
+   | 50%   | -0.3089	 | 0.0054	   | -0.1388     |
+   | 75%   | 0.8375	     | 0.5941	   | 0.9036      |
+   | max   | 3.4033	     | 2.3601	   | 2.6412      |
+
+   Dapat dilihat bahwa setelah proses standarisasi sekarang nilai mean = 0 dan standar deviasi = 1.
 
 ## Modeling
 
-Algoritma pada proyek ini melakukan pemodelan dengan 3 algoritma, yaitu:
+Pada tahap modeling, dilakukan pemilihan algoritma yang akan digunakan dalam membuat model *machine learning*, serta pengembangan dan pelatihan model *machine learning* agar dapat digunakan untuk melakukan analisis prediksi. Algoritma pada proyek ini melakukan pemodelan dengan 3 algoritma, yaitu:
 
-**1. K-Nearest Neighbors (KNN)**
+1. **K-Nearest Neighbors (KNN)**
 
-K-Nearest Neighbors (KNN) adalah algoritma machine learning yang sederhana dan mudah dipahami untuk klasifikasi dan regresi. Algoritma ini bekerja dengan menemukan k tetangga terdekat dari data baru dan kemudian menggunakan kategori atau nilai rata-rata dari tetangga tersebut untuk memprediksi kategori atau nilai data baru. Adapun parameter yang digunakan pada proyek ini adalah:
-- `n_neighbors` jumlah tetangga terdekat.
+   K-Nearest Neighbors (KNN) adalah algoritma machine learning yang sederhana dan mudah dipahami untuk klasifikasi dan regresi. Algoritma ini bekerja dengan menemukan k tetangga terdekat dari data baru dan kemudian menggunakan kategori atau nilai rata-rata dari tetangga tersebut untuk memprediksi kategori atau nilai data baru. Pada algoritma K-Nearest Neighbor menggunakan parameter `n-neighbors` dengan nilai k = 10.
 
-Keunggulan KNN :
-- Dapat digunakan untuk klasifikasi dan regresi.
-- Sederhana dan mudah dipahami.
+   ```python
+   knn = KNeighborsRegressor(n_neighbors=10)
+   ```
 
-Kekurangan KNN :
-- Sensitif terhadap outlier. 
-- Membutuhkan banyak memori dan waktu komputasi untuk dataset besar. 
-- Sulit untuk memilih nilai K yang optimal.
+   Keunggulan KNN :
+   - Dapat digunakan untuk klasifikasi dan regresi.
+   - Sederhana dan mudah dipahami.
+   
+   Kekurangan KNN :
+   - Sensitif terhadap outlier. 
+   - Membutuhkan banyak memori dan waktu komputasi untuk dataset besar. 
+   - Sulit untuk memilih nilai K yang optimal.
 
-**2. Random Forest**
+2. **Random Forest**
 
-Random Forest adalah algoritma machine learning ensemble yang menggabungkan beberapa decision tree untuk meningkatkan akurasi prediksi. Algoritma ini bekerja dengan membuat banyak decision tree secara acak dan kemudian menggunakan voting untuk memprediksi kategori atau nilai data baru. Adapun parameter yang digunakan pada proyek ini adalah:
-- `n_estimators` jumlah tetangga terdekat.
-- `max_depth` Kedalaman maksimum pohon keputusan individual.
-- `n_jobs` mempercepat pelatihan pada sistem dengan beberapa core CPU.
+   Random Forest adalah algoritma machine learning ensemble yang menggabungkan beberapa decision tree untuk meningkatkan akurasi prediksi. Algoritma ini bekerja dengan membuat banyak decision tree secara acak dan kemudian menggunakan voting untuk memprediksi kategori atau nilai data baru. Pada algoritma Random Forest menggunakan parameter `n-estimator` dengan jumlah 50 trees (pohon), `max-depth` dengan nilai kedalaman atau panjang pohon sebesar 10, `random-state` dengan nilai 55, dan `n-jobs` yang bernilai -1 yang berarti pekerjaan dilakukan secara paralel.
 
-Keunggulan Random Forest :
-- Memiliki akurasi prediksi yang tinggi.
-- Mampu menangani dataset dengan dimensi tinggi.
-- Tidak sensitif terhadap outlier.
+   ```python
+   RF = RandomForestRegressor(n_estimators = 50, max_depth = 10, random_state = 55, n_jobs = -1)
+   ```
+   Keunggulan Random Forest :
+   - Memiliki akurasi prediksi yang tinggi.
+   - Mampu menangani dataset dengan dimensi tinggi.
+   - Tidak sensitif terhadap outlier.
+   
+   Kekurangan Random Forest :
+   - Cenderung overfit pada dataset kecil. 
+   - Membutuhkan banyak waktu komputasi untuk pelatihan. 
+   - Sulit untuk diinterpretasikan.
 
-Kekurangan Random Forest :
-- Cenderung overfit pada dataset kecil. 
-- Membutuhkan banyak waktu komputasi untuk pelatihan. 
-- Sulit untuk diinterpretasikan.
+3. **Gradient Boosting**
 
-**3. Gradient Boosting**
+   Gradient Boosting adalah algoritma machine learning yang menggunakan teknik ensembel learning dari decision tree untuk memprediksi nilai. Gradient Boosting sangat mampu menangani pattern yang kompleks dan data ketika linear model tidak dapat menangani. Pada algoritma Gradient Boosting menggunakan parameter  `max-depth` dengan nilai kedalaman atau panjang pohon sebesar 7, dan `random-state` dengan nilai 55.
 
-Gradient Boosting adalah algoritma machine learning yang menggunakan teknik ensembel learning dari decision tree untuk memprediksi nilai. Gradient Boosting sangat mampu menangani pattern yang kompleks dan data ketika linear model tidak dapat menangani. Untuk parameter yang digunakan pada model ini ada 3 yaitu :
-- `max_depth` Kedalaman maksimum pohon keputusan individual.
+   ```python
+   boosting = GradientBoostingRegressor(max_depth=7, random_state=55)
+   ```
 
-Kelebihan Gradient Boosting :
-- Hasil pemodelan yang lebih akurat
-- Model yang stabil dan lebih kuat (robust)
-- Dapat digunakan untuk menangkap hubungan linear maupun non linear pada data
-
-Kekurangan Gradient Boosting :
-- Pengurangan kemampuan interpretasi model
-- Waktu komputasi dan desain tinggi
-- Tingkat kesulitan yang tinggi dalam pemilihan model
+   Kelebihan Gradient Boosting :
+   - Hasil pemodelan yang lebih akurat
+   - Model yang stabil dan lebih kuat (robust)
+   - Dapat digunakan untuk menangkap hubungan linear maupun non linear pada data
+   
+   Kekurangan Gradient Boosting :
+   - Pengurangan kemampuan interpretasi model
+   - Waktu komputasi dan desain tinggi
+   - Tingkat kesulitan yang tinggi dalam pemilihan model
 
 ## Evaluation
 
-Proses evaluasi model pada proyek ini menggunakan metrik Mean Squared Error yang menghitung jumlah selisih kuadrat rata-rata nilai sebenarnya dengan nilai prediksi [[6]](https://www.dicoding.com/academies/319/tutorials/18595). MSE dipilih karena memberikan penalti yang lebih besar untuk kesalahan prediksi yang besar, sehingga membantu dalam mengidentifikasi model yang mampu memberikan prediksi lebih akurat.
+Pada tahap evaluasi, dilakukan pengujian model dengan ketiga algoritma yang telah dibuat pada tahap modeling. Sebelum melakukan evaluasi, dilakukan proses scaling pada data latih untuk menghindari kebocoran data.
 
-![image](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/Rumus%20MSE.jpeg)
+```python
+X_test.loc[:, numerical_features] = scaler.transform(X_test[numerical_features])
+```
 
-_Keterangan:  
-N = jumlah dataset  
-yi = nilai sebenarnya  
-y_pred = nilai prediksi_
+Proses evaluasi model pada proyek ini menggunakan metrik Mean Squared Error yang menghitung jumlah selisih kuadrat rata-rata nilai sebenarnya dengan nilai prediksi [[7]](https://www.dicoding.com/academies/319/tutorials/18595). MSE dipilih karena memberikan penalti yang lebih besar untuk kesalahan prediksi yang besar, sehingga membantu dalam mengidentifikasi model yang mampu memberikan prediksi lebih akurat.
+
+$$MSE = \frac{1}{N} \sum_{i=1}^{N} (y_i - \hat{y}_i)^2$$
+
+Keterangan:  
+$N$ = Jumlah data    
+$y_i$ = Nilai sebenarnya   
+$\hat{y_i}$ = Nilai prediksi
 
 **Cara kerja :**
 
 Cara kerja Metrik MSE adalah dengan menghitung selisih hasil prediksi dengan nilai fitur target (PE). Nilai selisih tersebut, disebut juga sebagai nilai eror yang kemudian di kuadratkan untuk menangani nilai selisih negatif. Selanjutnya hasil pengkuadratan setiap nilai selisih dijumlahkan dan terakhir dibagi dengan banyak data point (n) untuk memperoleh nilai rata-ratanya. Rata-rata inilah yang disebut Mean Squared Error (MSE).
 
-Berikut adalah tabel nilai MSE pada setiap model dengan data latih dan data uji :
+Berikut adalah tabel nilai MSE pada setiap model dengan data latih dan data uji.
 
-|	| train | test |
-|-----|-----|-----|
-| KNN	| 158.060099 | 188.027968 |
-| RF | 184.881839 | 189.772913 |
+Tabel 7. Nilai Evaluasi Model _Machine Learning_
+|	       | train      | test       |
+|----------|------------|------------|
+| KNN	   | 158.060099 | 188.027968 |
+| RF       | 184.881839 | 189.772913 |
 | Boosting | 133.044841 | 146.840974 |
 
 Untuk memudahkan dalam mengevaluasi model kita akan melakukan visualisasi hasil menggunakan bar chart sebagai berikut.
 
 ![image](https://github.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/blob/main/images/barplot%20MSE.png)
 
-**Menguji dengan Beberapa Sampel Acak dari Dataset**
+Gambar 10. Grafik Evaluasi Model Machine Learning
+
+Berdasarkan grafik diatas, dapat disimpulkan sebagai berikut:
+- Model dengan algoritma Gradient Boosting memberikan nilai _error_ yang paling kecil yaitu _train_ sebesar 133.044841 dan _test_ sebesar 146.840974.
+- Model dengan algoritma KKN memberikan nilai _error_ _train_ sebesar 158.060099 dan _test_ sebesar 188.027968.
+- Model dengan algoritma Random Forest memberikan nilai _error_ yang paling besar yaitu _train_ sebesar 184.881839 dan *test* sebesar 189.772913.
 
 Berikut hasil uji prediksi menggunakan beberapa harga dari data test.
 
-| | y_true | prediksi_KNN | prediksi_RF | prediksi_Boosting |
-|-----|-----|-----|-----|-----|
-| 65114 | 868	| 944.0 | 701.4	| 915.8 |
+Tabel 8. Hasil Pengujian Prediksi Model
+|       | y_true | prediksi_KNN | prediksi_RF | prediksi_Boosting |
+|-------|--------|--------------|-------------|-------------------|
+| 65114 | 868    | 944.0        | 701.4	      | 915.8             |
 
-Terlihat bahwa prediksi model KNN, prediksi model RF, dan prediksi model Bossting adalah $994, $701, dan $915 dari $868. Dari ketiga model, model yang memiliki nilai prediksi meleset sangat kecil adalah model Boosting dan model yang memiliki nilai prediksi meleset sangat besar adalah RF. 
+Terlihat bahwa prediksi model KNN, prediksi model Random Forest, dan prediksi model Gradient Boosting adalah $994, $701, dan $915 dari $868. Dari ketiga model, model yang memiliki nilai prediksi meleset sangat kecil adalah model Boosting dan model yang memiliki nilai prediksi meleset sangat besar adalah RF. 
 
-Kesimpulan yang diperoleh dari hasil analisis dan pemodelan machine learning pada kasus ini adalah model yang digunakan untuk melakukan analisis prediksi harga batu permata menghasilkan tingkat error pada pelatihan model, yaitu nilai error paling kecil adalah nilai error model Boosting dan nilai error paling besar adalah nilai error model RF.
-
+Kesimpulan yang diperoleh dari hasil analisis dan pemodelan _Machine Learning_ untuk kasus ini adalah model yang digunakan untuk melakukan analisis harga batu permata menghasilkan tingkat _error_ yang paling rendah menggunakan algoritma Gradient Boosting dan memberikan hasil prediksi yang paling mendekati dengan data sebenarnya jika dibandingkan dengan algoritma lainnya, yaitu K-Nearest Neighbor dan Random Forest.
 
 
 ## Referensi
@@ -370,6 +424,6 @@ Kesimpulan yang diperoleh dari hasil analisis dan pemodelan machine learning pad
 
 [6] Trivusi, "Gradient Boosting: Pengertian, Cara Kerja, dan Kegunaannya", *Trivusi*, 2023. https://www.trivusi.web.id/2023/03/algoritma-gradient-boosting.html
 
-[4] https://www.dicoding.com/academies/319/tutorials/18595
+[7] https://www.dicoding.com/academies/319/tutorials/18595
 
 
