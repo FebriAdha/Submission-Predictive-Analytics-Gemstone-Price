@@ -406,7 +406,7 @@ Tabel 8. Hasil Pengujian Prediksi Model
 |-------|--------|--------------|-------------|-------------------|
 | 65114 | 868    | 944.0        | 701.4	      | 915.8             |
 
-Terlihat bahwa prediksi model KNN, prediksi model Random Forest, dan prediksi model Gradient Boosting adalah $994, $701, dan $915 dari $868. Dari ketiga model, model yang memiliki nilai prediksi meleset sangat kecil adalah model Boosting dan model yang memiliki nilai prediksi meleset sangat besar adalah RF. 
+Terlihat bahwa prediksi model KNN, prediksi model Random Forest, dan prediksi model Gradient Boosting adalah 994, 701, dan 915 dari 868. Dari ketiga model, model yang memiliki nilai prediksi meleset sangat kecil adalah model Boosting dan model yang memiliki nilai prediksi meleset sangat besar adalah RF. 
 
 Kesimpulan yang diperoleh dari hasil analisis dan pemodelan _Machine Learning_ untuk kasus ini adalah model yang digunakan untuk melakukan analisis harga batu permata menghasilkan tingkat _error_ yang paling rendah menggunakan algoritma Gradient Boosting dan memberikan hasil prediksi yang paling mendekati dengan data sebenarnya jika dibandingkan dengan algoritma lainnya, yaitu K-Nearest Neighbor dan Random Forest.
 
