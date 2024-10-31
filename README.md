@@ -174,7 +174,7 @@ Kemudian dilakukan proses Exploratory Data Analysis (EDA) yang merupakan proses 
 
 6. **Univariate Analysis**
 
-   Proses univariate data analysis pada masing-masing fitur kategorial dan numerik.
+   Pada tahap ini akan dilakukan analisis data dengan Univariate Analysis pada semua fitur, baik fitur kategorik maupun fitur numerik.
 
    - Categorical Features
 
