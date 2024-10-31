@@ -211,7 +211,7 @@ Kemudian dilakukan proses Exploratory Data Analysis (EDA) yang merupakan proses 
 
 7. **Multivariate Analysis**
 
-   Proses multivariate data analysis pada masing-masing fitur kategorial dan numerik.
+   Pada tahap ini akan dilakukan pengecekan rata-rata probabilitas Price terhadap masing-masing fitur untuk mengetahui pengaruh fitur kategori dan numerik terhadap Price.
 
    - Categorical Features
 
