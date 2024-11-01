@@ -88,9 +88,10 @@ Kemudian dilakukan proses Exploratory Data Analysis (EDA) yang merupakan proses 
    | table    | Lebar bagian atas batu permata relatif terhadap titik terlebar | 43.0 - 95.0                                      |
    | x        | Panjang batu permata dalam mm                                  |  0.0 - 10.74                                     |
    | y        | Lebar batu permata dalam mm                                    | 0.0 - 58.9                                       |
+   | z	      | Kedalaman berlian dalam mm	                                   | 0-31.8                                           |
    | price    | Harga batu permata dalam (USD)                                 | 326 - 18,823                                     |
 
-2. **Deskripsi Statistik Data**
+3. **Deskripsi Statistik Data**
    
    Selanjutnya, kita akan melihat deskripsi statistik dari data yang dimiliki.
 
@@ -116,11 +117,11 @@ Kemudian dilakukan proses Exploratory Data Analysis (EDA) yang merupakan proses 
    - `75%` adalah kuartil ketiga.
    - `Max` adalah nilai maksimum.
 
-3. **Analisis Missing Values**
+4. **Analisis Missing Values**
 
    Berdasarkan hasil Fungsi `describe()`, pada nilai minimum untuk kolom x, y, dan z adalah 0. Diketahui bahwa x, y, dan z adalah ukuran panjang, lebar, dan kedalaman gemstone sehingga tidak mungkin ada gemstone dengan dimensi x, y, atau z itu bernilai 0. Oleh karena itu, perlu dilakukan pemeriksaan dan penghitungan jumlah nilai 0 pada kolom x, y, dan z sebagai langkah awal untuk mengetahui jumlah nilai yang dianggap sebagai missing values. Setelah mengetahui jumlahnya, langkah-langkah penanganan yang sesuai akan diterapkan di bagian **Menangani Missing Values**.
 
-4. **Analisis Outliers**
+5. **Analisis Outliers**
 
    Outliers merupakan nilai-nilai yang jauh berada di luar rentang normal dari distribusi data dimensi atau harga gemstone. Keberadaan outliers dapat mengindikasikan data yang tidak normal, entri yang salah, atau pengamatan ekstrim yang mungkin berpengaruh terhadap analisis. Selanjutnya, untuk mendeteksi _outlier_ dengan menggunakan teknik visualisasi dengan data (boxplot). Setelah outliers terdeteksi, penanganannya akan dilakukan menggunakan metode IQR (Interquartile Range).
 
@@ -132,7 +133,7 @@ Kemudian dilakukan proses Exploratory Data Analysis (EDA) yang merupakan proses 
 
    Dengan demikian, **Interquartile Range (IQR)** adalah selisih antara Q3 dan Q1 atau IQR = Q3 - Q1.
 
-5. **Data Duplikat**
+6. **Data Duplikat**
 
    Data duplikat adalah data yang muncul lebih dari satu kali dalam dataset dan dapat menyebabkan hasil analisis menjadi bias atau tidak akurat. Dalam kasus data gemstone, duplikat bisa terjadi ketika informasi mengenai gemstone tertentu tercatat lebih dari satu kali, baik secara tidak sengaja maupun karena proses penggabungan data yang tidak sempurna.
 
@@ -141,6 +142,14 @@ Kemudian dilakukan proses Exploratory Data Analysis (EDA) yang merupakan proses 
    - **Akurasi Analisis:** Data duplikat dapat mengganggu hasil statistik dan membuat perhitungan seperti rata-rata atau distribusi data menjadi tidak akurat.
    - **Efisiensi Pengolahan Data:** Data yang bersih dan bebas dari duplikat membuat proses analisis lebih cepat dan menghemat sumber daya komputasi.
    - **Reliabilitas Model:** Dalam konteks pembelajaran mesin, data duplikat dapat menyebabkan model belajar pola yang salah atau bias, sehingga berdampak negatif pada performa model.
+  
+7. **Univariate Analysis**
+
+   Analisis univariat adalah metode dalam analisis data yang fokus pada pengamatan dan penjelasan satu variabel data saja. Kata "univariate" berasal dari "uni" yang berarti satu dan "variat" yang berarti variabel. Dalam praktiknya, analisis ini tidak membahas tentang penyebab atau hubungan antar variabel, namun lebih kepada mendeskripsikan dan menemukan pola dalam satu variabel tersebut.[[7]](https://revou.co/kosakata/analisis-univariat)
+
+8. **Multivariate Analysis**
+
+   Analisis multivariat adalah teknik mengumpulkan beberapa kelompok data dan menganalisis hubungan antara lebih dari dua variabel yang terkait dengan data tersebut. Analisis multivariat digunakan ketika berhadapan dengan data yang memiliki setidaknya tiga variabel yang berbeda. Bisa meliputi 2 variabel independen dan 1 variabel dependen, atau sebaliknya. Variabel dependen biasa disebut dengan variabel Y, variabel yang dipengaruhi, variabel respons, atau variabel terikat. Sedangkan variabel independen disebut juga dengan variabel X, variabel bebas, variabel prediktor, atau variabel yang memengaruhi.[[8]](https://revou.co/kosakata/analisis-multivariat)
   
 ## Data Preparation
 
@@ -431,9 +440,14 @@ Tabel 8. Hasil Pengujian Prediksi Model
 |-------|--------|--------------|-------------|-------------------|
 | 65114 | 868    | 944.0        | 701.4	      | 915.8             |
 
-Terlihat bahwa prediksi model KNN, prediksi model Random Forest, dan prediksi model Gradient Boosting adalah 994, 701, dan 915 dari 868. Dari ketiga model, model yang memiliki nilai prediksi meleset sangat kecil adalah model Boosting dan model yang memiliki nilai prediksi meleset sangat besar adalah RF. 
+Terlihat bahwa prediksi model KNN, prediksi model Random Forest, dan prediksi model Gradient Boosting adalah 994, 701, dan 915 dari 868. Dari ketiga model, model yang memiliki nilai prediksi meleset sangat kecil adalah model Boosting dan model yang memiliki nilai prediksi meleset sangat besar adalah RF.
 
-Kesimpulan yang diperoleh dari hasil analisis dan pemodelan _Machine Learning_ untuk kasus ini adalah model yang digunakan untuk melakukan analisis harga batu permata menghasilkan tingkat _error_ yang paling rendah menggunakan algoritma Gradient Boosting dan memberikan hasil prediksi yang paling mendekati dengan data sebenarnya jika dibandingkan dengan algoritma lainnya, yaitu K-Nearest Neighbor dan Random Forest.
+### Kesimpulan
+
+Berdasarkan proyek yang telah dilakukan, maka dapat disimpulkan beberapa hal berikut.
+
+- Berdasarkan _Exploratory Data Analysis (EDA)_ menggunakan Correlation Matrix, fitur yang paling berkolerasi dengan harga gemstone adalah x (panjang), y (lebar), z (kedalam).
+- Berdasarkan hasil analisis dan pemodelan _Machine Learning_ untuk kasus ini adalah model yang digunakan untuk melakukan analisis harga batu permata menghasilkan tingkat _error_ yang paling rendah menggunakan algoritma Gradient Boosting dan memberikan hasil prediksi yang paling mendekati dengan data sebenarnya jika dibandingkan dengan algoritma lainnya, yaitu K-Nearest Neighbor dan Random Forest.
 
 
 ## Referensi
@@ -449,6 +463,10 @@ Kesimpulan yang diperoleh dari hasil analisis dan pemodelan _Machine Learning_ u
 [5] Wood, T. -.What is a Random Forest?. DeepAI. https://deepai.org/machine-learning-glossary-and-terms/random-forest
 
 [6] Trivusi, "Gradient Boosting: Pengertian, Cara Kerja, dan Kegunaannya", *Trivusi*, 2023. https://www.trivusi.web.id/2023/03/algoritma-gradient-boosting.html
+
+[7] Revou, "Analisis Univariat". https://revou.co/kosakata/analisis-univariat
+
+[8] Revou, "Analisis Multivariat". https://revou.co/kosakata/analisis-multivariat
 
 [7] https://www.dicoding.com/academies/319/tutorials/18595
 
