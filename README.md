@@ -316,7 +316,7 @@ Pada tahap persiapan data atau *data preparation* dilakukan beberapa proses, yai
 
 10. **Train Test Split**
 
-   Teknik ini dilakukan untuk membagi dataset menjadi dua bagian, yaitu data latih dan data uji. data latih akan digunakan untuk melatih model sedangkan data uji akan digunakan untuk evaluasi model. Hal tersebut perlu diterapkan agar model yang telah dilatih dapat diuji menggunakan data yang belum pernah dianalisa oleh model. Proses pembagian dataset menjadi data latih dan data uji dengan rasio perbandingan data latih dan data uji, yaitu 90 : 10. Terdapat 168755 total sampel data dalam dataset, sedangkan untuk total sampel data latih sebanyak 151879 data dan total sampel data uji sebanyak 16876 data.
+    Teknik ini dilakukan untuk membagi dataset menjadi dua bagian, yaitu data latih dan data uji. data latih akan digunakan untuk melatih model sedangkan data uji akan digunakan untuk evaluasi model. Hal tersebut perlu diterapkan agar model yang telah dilatih dapat diuji menggunakan data yang belum pernah dianalisa oleh model. Proses pembagian dataset menjadi data latih dan data uji dengan rasio perbandingan data latih dan data uji, yaitu 90 : 10. Terdapat 168755 total sampel data dalam dataset, sedangkan untuk total sampel data latih sebanyak 151879 data dan total sampel data uji sebanyak 16876 data.
 
 11. **Standarisasi**
 
@@ -334,7 +334,7 @@ Pada tahap persiapan data atau *data preparation* dilakukan beberapa proses, yai
     | 75%   | 0.8375	  | 0.5941	    | 0.9036      |
     | max   | 3.4033	  | 2.3601	    | 2.6412      |
 
-   Dapat dilihat bahwa setelah proses standarisasi sekarang nilai mean = 0 dan standar deviasi = 1.
+    Dapat dilihat bahwa setelah proses standarisasi sekarang nilai mean = 0 dan standar deviasi = 1.
 
 ## Modeling
 
