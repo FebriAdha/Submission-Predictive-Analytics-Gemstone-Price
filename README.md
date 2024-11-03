@@ -126,7 +126,21 @@ Kemudian dilakukan proses Exploratory Data Analysis (EDA) yang merupakan proses 
    - Nilai 0 pada kolom `y` : 2
    - Nilai 0 pada kolom `z` : 10
 
-   Terlihat bahwa pada untuk z bernilai 0, ternyata juga terdapat seluruh nilai 0 pada kolom x dan y. Oleh karena itu, baris-baris ini akan dihapus. Data setelah dihapus menjadi `193563` yang sebelumnya `193573`.
+   Terlihat bahwa pada untuk z bernilai 0, ternyata juga terdapat seluruh nilai 0 pada kolom x dan y. Oleh karena itu, baris-baris ini akan dihapus. Setelah dilakukan penghapusan, dilakukan pengecekan ulang dataset menggunakan fungsi `describe()`.
+   
+   Tabel 4. Pengecekan ulang _missing value_
+   |       | carat         | depth         | table         | x             | y             | z             | price         |
+   |-------|---------------|---------------|---------------|---------------|---------------|---------------|---------------|
+   | count | 193563.000000 | 193563.000000 | 193563.000000 | 193563.000000 | 193563.000000 | 193563.000000 | 193563.000000 |
+   | mean  | 0.790645      | 61.820608	   | 57.227547	   | 5.715312	   | 5.720061	   | 3.534429	   | 3968.858687   |
+   | std   | 0.462634	   | 1.081658	   | 1.918787	   | 1.109117	   | 1.102104	   | 0.688471	   | 4034.020215   |
+   | min   | 0.200000	   | 52.100000	   | 49.000000	   | 3.750000	   | 3.710000	   | 1.050000	   | 326.000000    |
+   | 25%   | 0.400000	   | 61.300000	   | 56.000000	   | 4.700000	   | 4.710000	   | 2.900000      | 950.000000    |
+   | 50%   | 0.700000	   | 61.900000	   | 57.000000	   | 5.700000	   | 5.720000      | 3.530000	   | 2401.000000   |
+   | 75%   | 1.030000	   | 62.400000	   | 58.000000	   | 6.510000	   | 6.510000	   | 4.030000      | 5407.500000   |
+   | max   | 3.500000	   | 71.600000	   | 79.000000	   | 9.650000	   | 10.010000	   | 31.300000	   | 18818.000000  |
+
+   Berdasarkan output di atas, dapat dilihat bahwa sudah tidak terdapat lagi missing value. Nilai min (minimal) dari setiap fitur numerik sudah tidak 0 lagi.
 
 4. **Memeriksa Data Duplikat**
 
@@ -137,8 +151,11 @@ Kemudian dilakukan proses Exploratory Data Analysis (EDA) yang merupakan proses 
    jumlah_duplikat = gemstone.duplicated().sum()
    print("\nJumlah Duplikat:", jumlah_duplikat)
    ```
-   Jumlah Duplikat: 0
-
+    Output:
+   
+   | Jumlah Duplikat: 0 |
+   |--------------------|
+  
    Tidak ada data duplikat yang teridentifikasi dalam dataset ini.
 
 5. **Menangani Outliers**
@@ -155,7 +172,7 @@ Kemudian dilakukan proses Exploratory Data Analysis (EDA) yang merupakan proses 
 
    $$IQR = Q3 - Q1$$
 
-   Setelah menggunakan metode IQR untuk menghilangkan outlier pada dataset jumlah dataset menjadi `168755` yang awalnya adalah `193573`.
+   Setelah menggunakan metode IQR untuk menghilangkan outlier pada dataset jumlah dataset menjadi `168755` yang awalnya adalah `193563`.
 
 6. **Univariate Analysis**
 
@@ -233,7 +250,7 @@ Kemudian dilakukan proses Exploratory Data Analysis (EDA) yang merupakan proses 
 
    Menghapus fitur depth pada dataset karena memiliki korelasi yang rendah terhadap fitur price.
 
-   Tabel 4. Pengecekan dataset setelah menghapus fitur depth
+   Tabel 5. Pengecekan dataset setelah menghapus fitur depth
    |   | carat | cut       | color | clarity | table | x    | y    | z    | price |
    |---|-------|-----------|-------|---------|-------|------|------|------|-------|
    | 2 | 0.70  | Ideal     |	G  | VS1  	 | 57.0	 | 5.69 | 5.73 | 3.50 | 2772  |
@@ -273,7 +290,7 @@ Pada tahap persiapan data atau *data preparation* dilakukan beberapa proses, yai
 
    Proses standarisasi fitur numerik, yaitu carat dan dimension menggunakan StandardScaler sehingga fitur data menjadi bentuk yang lebih mudah diolah oleh model machine learning.
    
-   Tabel 5. Standarisasi Fitur Numerik
+   Tabel 6. Standarisasi Fitur Numerik
    |       | carat       | table       | dimension   |
    |-------|-------------|-------------|-------------|
    | count | 151879.0000 | 151879.0000 | 151879.0000 |
@@ -366,7 +383,7 @@ Cara kerja Metrik MSE adalah dengan menghitung selisih hasil prediksi dengan nil
 
 Berikut adalah tabel nilai MSE pada setiap model dengan data latih dan data uji.
 
-Tabel 6. Nilai Evaluasi Model _Machine Learning_
+Tabel 7. Nilai Evaluasi Model _Machine Learning_
 |	       | train      | test       |
 |----------|------------|------------|
 | KNN	   | 158.060099 | 188.027968 |
@@ -386,7 +403,7 @@ Berdasarkan grafik diatas, dapat disimpulkan sebagai berikut:
 
 Berikut hasil uji prediksi menggunakan beberapa harga dari data test.
 
-Tabel 7. Hasil Pengujian Prediksi Model
+Tabel 8. Hasil Pengujian Prediksi Model
 |       | y_true | prediksi_KNN | prediksi_RF | prediksi_Boosting |
 |-------|--------|--------------|-------------|-------------------|
 | 65114 | 868    | 944.0        | 701.4	      | 915.8             |
