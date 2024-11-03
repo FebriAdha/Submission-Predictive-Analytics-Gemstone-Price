@@ -47,9 +47,11 @@ Untuk mencapai goals yang telah ditetapkan, berikut adalah solusi yang akan dite
 
 ## Data Understanding
 
-Dataset yang digunakan dalam proyek ini adalah dataset [Gemstone Price](https://www.kaggle.com/datasets/dhanrajcodes/gemstone-price) yang diambil dari platfrom Kaggle. File yang digunakan berupa file csv, yaitu `gemstone.csv` dengan ukuran 10.46 MB. Dataset tersebut terdiri dari 193573 baris dan 11 columns
+![Gemstone](https://raw.githubusercontent.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/refs/heads/main/images/Gemstone%20Dataset.png)
 
-Dari dataset tersebut, dilakukan penghapusan kolom pertama yaitu id yang berisikan nomor masing-masing data.
+Dataset yang digunakan dalam proyek ini adalah dataset [Gemstone Price](https://www.kaggle.com/datasets/dhanrajcodes/gemstone-price) yang diambil dari platfrom Kaggle. File yang digunakan berupa file csv, yaitu `gemstone.csv` dengan ukuran 10.46 MB. Dataset tersebut terdiri dari 193573 baris dan 11 columns. Dataset ini mencakup karakteristik berbagai batu permata (gemstones) dengan kolom target berupa harga (`price`).
+
+Karakteristik dari dataset ini meliputi fitur non-numerik seperti `cut`, `color`, dan `clarity`, serta numerik seperti `carat`, `depth`, `table`, `x`, `y`, dan `z`. Kolom `price` (harga) bertindak sebagai target variable. Pada tahap awal, dilakukan penghapusan kolom `id` yang berisi nomor urut data.
 
 Kemudian dilakukan proses Exploratory Data Analysis (EDA) yang merupakan proses investigasi awal pada data untuk menganalisis karakteristik, menemukan pola, anomali, dan memeriksa asumsi pada data.
 
@@ -92,19 +94,19 @@ Kemudian dilakukan proses Exploratory Data Analysis (EDA) yang merupakan proses 
 
 2. **Deskripsi Statistik Data**
    
-   Selanjutnya, kita akan melihat deskripsi statistik dari data yang dimiliki.
-
+   Tahap ini dilakukan untuk mengecek deskripsi statistik data dengan fitur `describe()`.
+   
    Tabel 3. Deskripsi Statistik Data
    |       | carat         | depth         | table         | x             | y             | z             | price         |
    |-------|---------------|---------------|---------------|---------------|---------------|---------------|---------------|
    | count | 193573.000000 | 193573.000000 | 193573.000000 | 193573.000000 | 193573.000000 | 193573.000000 | 193573.000000 |
-   | mean	 | 0.790688	     | 61.820574	   | 57.227675	   | 5.715312	     | 5.720094	     | 3.534246	     | 3969.155414   |
-   | std	 | 0.462688	     | 1.081704	     | 1.918844	     | 1.109422	     | 1.102333	     | 0.688922	     | 4034.374138   |
-   | min	 | 0.200000	     | 52.100000	   | 49.000000	   | 0.000000	     | 0.000000	     | 0.000000	     | 326.000000    |
-   | 25%	 | 0.400000	     | 61.300000	   | 56.000000	   | 4.700000	     | 4.710000	     | 2.900000	     | 951.000000    |
-   | 50%	 | 0.700000	     | 61.900000	   | 57.000000	   | 5.700000	     | 5.720000	     | 3.530000	     | 2401.000000   |
-   | 75%	 | 1.030000	     | 62.400000	   | 58.000000	   | 6.510000	     | 6.510000	     | 4.030000	     | 5408.000000   |
-   | max	 | 3.500000	     | 71.600000	   | 79.000000	   | 9.650000	     | 10.010000	   | 31.300000	   | 18818.000000  |
+   | mean  | 0.790688	   | 61.820574	   | 57.227675	   | 5.715312	   | 5.720094	   | 3.534246	   | 3969.155414   |
+   | std   | 0.462688	   | 1.081704	   | 1.918844	   | 1.109422	   | 1.102333	   | 0.688922	   | 4034.374138   |
+   | min   | 0.200000	   | 52.100000	   | 49.000000	   | 0.000000	   | 0.000000	   | 0.000000	   | 326.000000    |
+   | 25%   | 0.400000	   | 61.300000	   | 56.000000	   | 4.700000	   | 4.710000	   | 2.900000	   | 951.000000    |
+   | 50%   | 0.700000	   | 61.900000	   | 57.000000	   | 5.700000	   | 5.720000	   | 3.530000	   | 2401.000000   |
+   | 75%   | 1.030000	   | 62.400000	   | 58.000000	   | 6.510000	   | 6.510000      | 4.030000	   | 5408.000000   |
+   | max   | 3.500000	   | 71.600000	   | 79.000000	   | 9.650000	   | 10.010000	   | 31.300000	   | 18818.000000  |
 
    Fungsi `describe()` memberikan informasi statistik pada masing-masing kolom, antara lain:
    - `Count` adalah jumlah sampel pada data.
@@ -118,25 +120,17 @@ Kemudian dilakukan proses Exploratory Data Analysis (EDA) yang merupakan proses 
 
 3. **Menangani Missing Value**
 
-   Dilakukan pengecekan nilai yang hilang atau missing valie pada kolom x, y, dan z yang bernilai 0. Terdapat missing value pada kolom x sebanyak 3, y sebanyak 2, dan z sebanyak 10. 
+   Berdasarkan hasil Fungsi `describe()`, pada nilai minimum untuk kolom x, y, dan z adalah 0. Diketahui bahwa x, y, dan z adalah ukuran panjang, lebar, dan kedalaman gemstone sehingga tidak mungkin ada gemstone dengan dimensi x, y, atau z itu bernilai 0. Oleh karena itu, perlu dilakukan pemeriksaan dan penghitungan jumlah nilai 0 pada kolom x, y, dan z sebagai langkah awal untuk mengetahui jumlah nilai yang dianggap sebagai missing values. Pada data `gemstone.csv`, terdapat:
 
-   Tabel 4. Missing Value Kolom x, y, z
-   |        | carat | cut       | color | clarity |	depth | table |	x    | y    | z   |	price |
-   |--------|-------|-----------|-------|---------|-------|-------|------|------|-----|-------|
-   | 8750   |	1.02	| Premium   |	H	    | SI2	    | 59.4	| 61.0	| 6.57 | 6.53 |	0.0 |	4144  |
-   | 39413  |	2.18	| Premium	  | H	    | SI2	    | 59.4	| 60.0	| 8.46 | 8.41 | 0.0	| 15842 |
-   | 92703  |	0.71	| Good	    | F	    | SI1	    | 64.1	| 60.0	| 0.00 | 0.00 |	0.0	| 2130  |
-   | 98719  |	2.17	| Premium	  | H	    | SI2	    | 60.3	| 57.0	| 8.42 | 8.36	| 0.0	| 15923 |
-   | 99624  |	2.20	| Premium	  | I	    | SI2	    | 60.1	| 60.0	| 8.45 | 8.41	| 0.0	| 11221 |
-   | 117161 |	2.20	| Premium	  | F	    | SI2	    | 60.3	| 58.0	| 8.49 | 8.45	| 0.0	| 15188 |
-   | 151690 |	2.18	| Premium	  | I	    | VS2	    | 61.2	| 62.0	| 8.45 | 8.37	| 0.0	| 15701 |
-   | 159429 |	2.18	| Premium	  | H	    | SI2	    | 60.8	| 59.0	| 8.42 | 8.38	| 0.0	| 13938 |
-   | 170318 |	0.71	| Good	    | D	    | VS2	    | 64.1	| 60.0	| 0.00 | 0.00	| 0.0	| 910   |
-   | 178000 |	0.71	| Very Good |	F	    | SI2	    | 62.0	| 60.0	| 0.00 | 6.71	| 0.0	| 2130  |
+   - Nilai 0 pada kolom `x` : 3
+   - Nilai 0 pada kolom `y` : 2
+   - Nilai 0 pada kolom `z` : 10
 
    Terlihat bahwa pada untuk z bernilai 0, ternyata juga terdapat seluruh nilai 0 pada kolom x dan y. Oleh karena itu, baris-baris ini akan dihapus. Data setelah dihapus menjadi `193563` yang sebelumnya `193573`.
 
 4. **Memeriksa Data Duplikat**
+
+   Pengecekan terhadap data duplikat menunjukkan hasil sebagai berikut:
 
    ```python
    # Menghitung jumlah baris yang duplikat dalam Dataset
@@ -145,32 +139,23 @@ Kemudian dilakukan proses Exploratory Data Analysis (EDA) yang merupakan proses 
    ```
    Jumlah Duplikat: 0
 
-   Terlihat bahwa tidak ada data duplikat pada dataset.
-   
+   Tidak ada data duplikat yang teridentifikasi dalam dataset ini.
 
 5. **Menangani Outliers**
 
    Outliers merupakan sampel yang nilainya sangat jauh dari cakupan umum data utama, dengan itu kita akan memeriksa apakah terdapat outlier pada kolom-kolom numerik.
 
-   1. Fitur Carat
-   
-   ![image carat](https://raw.githubusercontent.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/refs/heads/main/images/Outlier%20carat.png)
+   ![Outliers](https://raw.githubusercontent.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/refs/heads/main/images/boxplot%20outlier.png)
 
-   2. Fitur Table
+   Gambar 1. Grafik boxplot outliers
 
-   ![image table](https://raw.githubusercontent.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/refs/heads/main/images/Outlier%20table.png)
-
-   3. Fitur X
-
-   ![image x](https://raw.githubusercontent.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/refs/heads/main/images/Outlier%20x.png)
-
-   Terlihat bahwa terdapat beberapa outlier pada kolom-kolom di atas bahwa ketiga fitur dataset, yakni `carat`, `table`, dan `x` memiliki outliers. Untuk menangani outliers akan digunakan metode IQR (_Inter Quartile Range_). IQR dihitung dengan mengurangkan kuartil ketiga (Q3) dari kuartil pertama (Q1) sebagaimana rumus berikut.
+   Berdasarkan output diagram di atas terlihat bahwa ada outliers pada fitur, yakni `carat`, `depth`, `table`, `price`, `x`, `y`, dan `z`. Untuk menangani outliers akan digunakan metode IQR (_Inter Quartile Range_). IQR dihitung dengan mengurangkan kuartil ketiga (Q3) dari kuartil pertama (Q1) sebagaimana rumus berikut.
 
    $$IQR = Inter Quartile Range$$
 
    $$IQR = Q3 - Q1$$
 
-   Setelah menggunakan metode IQR untuk menghilangkan outlier pada dataset jumlah dataset menjadi 168755 yang awalnya adalah 193573.
+   Setelah menggunakan metode IQR untuk menghilangkan outlier pada dataset jumlah dataset menjadi `168755` yang awalnya adalah `193573`.
 
 6. **Univariate Analysis**
 
@@ -180,29 +165,29 @@ Kemudian dilakukan proses Exploratory Data Analysis (EDA) yang merupakan proses 
 
      ![Univariate Analysis)](https://raw.githubusercontent.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/refs/heads/main/images/Fitur%20cut.png)
      
-     Gambar 1. Univariate Analysis (Fitur cut)
+     Gambar 2. Univariate Analysis (Fitur cut)
 
-     Pada Gambar 1 terdapat 5 kategori pada fitur Cut, secara berurutan dari jumlahnya yang paling banyak yaitu: Ideal, Premium, Very Good, Good, dan Fair. Dari data persentase dapat kita simpulkan bahwa lebih dari 70% sampel merupakan gemstone tipe grade tinggi, yaitu grade Ideal dan Premium.
+     Pada Gambar 2 terdapat 5 kategori pada fitur Cut, secara berurutan dari jumlahnya yang paling banyak yaitu: Ideal, Premium, Very Good, Good, dan Fair. Dari data persentase dapat kita simpulkan bahwa lebih dari 70% sampel merupakan gemstone tipe grade tinggi, yaitu grade Ideal dan Premium.
 
      ![Univariate Analysis](https://raw.githubusercontent.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/refs/heads/main/images/Fitur%20color.png)
 
-     Gambar 2. Grafik Univariate Distribusi (Fitur color)
+     Gambar 3. Grafik Univariate Distribusi (Fitur color)
 
-     Pada Gambar 2 terdapat urutan kategori warna dari yang paling buruk hingga yang paling bagus adalah J, I, H, G, F, E, dan D. Dari grafik di atas, dapat disimpulkan bahwa sebagian besar grade berada pada grade menengah, yaitu G, F, H.
+     Pada Gambar 3 terdapat urutan kategori warna dari yang paling buruk hingga yang paling bagus adalah J, I, H, G, F, E, dan D. Dari grafik di atas, dapat disimpulkan bahwa sebagian besar grade berada pada grade menengah, yaitu G, F, H.
 
      ![Univariate Analysis](https://raw.githubusercontent.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/refs/heads/main/images/Fitur%20clarity.png)
 
-     Gambar 3. Grafik Univariate Distribusi (Fitur clarity)
+     Gambar 4. Grafik Univariate Distribusi (Fitur clarity)
 
-     Pada Gambar 3 fitur Clarity terdiri dari 8 kategori dari yang paling buruk ke yang paling baik, yaitu: I1, SI2, SI1, VS2, VS1, VVS2, VVS1, dan IF. Dari grafik dapat disimpulkan bahwa sebagian besar fitur merupakan grade rendah, yaitu SI1, SI2, dan VS2.
+     Pada Gambar 4 fitur Clarity terdiri dari 8 kategori dari yang paling buruk ke yang paling baik, yaitu: I1, SI2, SI1, VS2, VS1, VVS2, VVS1, dan IF. Dari grafik dapat disimpulkan bahwa sebagian besar fitur merupakan grade rendah, yaitu SI1, SI2, dan VS2.
 
    - Numerical Features 
 
      ![Univariate Analysis](https://raw.githubusercontent.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/refs/heads/main/images/Univariate%20Analysis%20(Data%20Numerik).png)
 
-     Gambar 4. Grafik Univariate Distribusi (Fitur Numerikal)
+     Gambar 5. Grafik Univariate Distribusi (Fitur Numerikal)
 
-     Berdasarkan Gambar 4, dapat diamati histogram untuk variabel "price" yang merupakan fitur target (label). Dari histogram "price", kita bisa memperoleh beberapa informasi, antara lain:
+     Berdasarkan Gambar 5, dapat diamati histogram untuk variabel "price" yang merupakan fitur target (label). Dari histogram "price", kita bisa memperoleh beberapa informasi, antara lain:
 
      - Sebagian besar gemstone memiliki harga di bawah $4000, dengan puncak frekuensi pada kisaran harga yang lebih rendah.
      - Rentang harga gemstone cukup luas, mulai dari ratusan dolar Amerika hingga sekitar $12000.
@@ -219,9 +204,9 @@ Kemudian dilakukan proses Exploratory Data Analysis (EDA) yang merupakan proses 
 
      ![Multivariate Analysis](https://raw.githubusercontent.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/refs/heads/main/images/Multivariate%20Analysis%20(Data%20Categori).jpeg)
 
-     Gambar 5. Grafik Multivariate (Fitur Kategorikal)
+     Gambar 6. Grafik Multivariate (Fitur Kategorikal)
 
-     Dengan mengamati Gambar 5, memiliki rata-rata harga relatif terhadap data kategori, kita memperoleh _insight_ sebagai berikut:
+     Dengan mengamati Gambar 6, memiliki rata-rata harga relatif terhadap data kategori, kita memperoleh _insight_ sebagai berikut:
 
      - Pada fitur 'cut', rata-rata harga berlian berada dalam rentang yang mirip, yaitu antara 2500 hingga 4000. Grade tertinggi seperti "Ideal" justru memiliki harga rata-rata lebih rendah dibandingkan dengan grade lainnya seperti "Fair." Hal ini menunjukkan bahwa fitur "cut" memiliki pengaruh yang kecil terhadap variasi harga gemstone.
      - Pada fitur 'color', terdapat kecenderungan bahwa harga rata-rata berlian lebih tinggi pada grade warna yang lebih rendah, seperti "I" dan "J," sementara grade warna yang lebih tinggi seperti "E" memiliki harga yang lebih rendah. Ini menunjukkan bahwa pengaruh warna terhadap harga berlian juga relatif rendah.
@@ -234,28 +219,28 @@ Kemudian dilakukan proses Exploratory Data Analysis (EDA) yang merupakan proses 
 
      ![Multivariate Aanlysis](https://raw.githubusercontent.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/refs/heads/main/images/Multivariate%20Analysis%20(Data%20Numerik).png)
 
-     Gambar 6. Grafik Multivariate (Fitur Numerikal)
+     Gambar 7. Grafik Multivariate (Fitur Numerikal)
 
-     Berdasarkan Gambar 6, fokus pada relasi antara semua fitur numerik dengan fitur target yaitu ‘price’. Pada pola sebaran data grafik pairplot terlihat ‘carat’, ‘x’, ‘y’, dan ‘z’ memiliki korelasi yang tinggi dengan fitur "price". Sedangkan kedua fitur lainnya yaitu 'depth' dan 'table' terlihat memiliki korelasi yang lemah karena sebarannya tidak membentuk pola.
+     Berdasarkan Gambar 7, fokus pada relasi antara semua fitur numerik dengan fitur target yaitu ‘price’. Pada pola sebaran data grafik pairplot terlihat ‘carat’, ‘x’, ‘y’, dan ‘z’ memiliki korelasi yang tinggi dengan fitur "price". Sedangkan kedua fitur lainnya yaitu 'depth' dan 'table' terlihat memiliki korelasi yang lemah karena sebarannya tidak membentuk pola.
 
-9. **Correlation Matrix**
+8. **Correlation Matrix**
 
    ![Multivariate Analysis](https://raw.githubusercontent.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/refs/heads/main/images/Analysis%20Matrik%20Korelasi.png)
 
-   Gambar 7. Diagram Heatmap Correlation Matrik (Fitur Numerikal)
+   Gambar 8. Diagram Heatmap Correlation Matrik (Fitur Numerikal)
 
-   Berdasarkan Gambar 7, fitur 'carat', 'x', 'y', dan 'z' memiliki skor korelasi yang besar (diatas 0.9) dengan fitur target 'price'. Dimana, fitur 'price' berkolerasi tinggi dengan keempat fitur tersebut. Sementara fitur 'depth' memiliki korelasi yang sangat kecil (0.05). Sehingga fitur 'depth' dapat dihapus.
+   Berdasarkan Gambar 8, fitur 'carat', 'x', 'y', dan 'z' memiliki skor korelasi yang besar (diatas 0.9) dengan fitur target 'price'. Dimana, fitur 'price' berkolerasi tinggi dengan keempat fitur tersebut. Sementara fitur 'depth' memiliki korelasi yang sangat kecil (0.05). Sehingga fitur 'depth' dapat dihapus.
 
    Menghapus fitur depth pada dataset karena memiliki korelasi yang rendah terhadap fitur price.
 
-   Tabel 5. Pengecekan dataset setelah menghapus fitur depth
+   Tabel 4. Pengecekan dataset setelah menghapus fitur depth
    |   | carat | cut       | color | clarity | table | x    | y    | z    | price |
    |---|-------|-----------|-------|---------|-------|------|------|------|-------|
-   | 2 | 0.70  | Ideal     |	G    | VS1  	 | 57.0	 | 5.69 | 5.73 | 3.50 | 2772  |
-   | 3 | 0.32  | Ideal     |	G    | VS1	   | 56.0	 | 4.38 | 4.41 | 2.71 | 666   |
-   | 5 | 1.51  | Very Good |	J    | SI1	   | 58.0	 | 7.34 | 7.29 | 4.59 | 7506  |
-   | 6 | 0.74  | Ideal     |	E    | VS2	   | 57.0	 | 5.76 | 5.79 | 3.57 | 3229  |
-   | 7 | 1.34  | Premium   |	G    | SI2	   | 57.0	 | 7.00 | 7.05 | 4.38 | 6224  |
+   | 2 | 0.70  | Ideal     |	G  | VS1  	 | 57.0	 | 5.69 | 5.73 | 3.50 | 2772  |
+   | 3 | 0.32  | Ideal     |	G  | VS1	 | 56.0	 | 4.38 | 4.41 | 2.71 | 666   |
+   | 5 | 1.51  | Very Good |	J  | SI1	 | 58.0	 | 7.34 | 7.29 | 4.59 | 7506  |
+   | 6 | 0.74  | Ideal     |	E  | VS2	 | 57.0	 | 5.76 | 5.79 | 3.57 | 3229  |
+   | 7 | 1.34  | Premium   |	G  | SI2	 | 57.0	 | 7.00 | 7.05 | 4.38 | 6224  |
 
 ## Data Preparation
 
@@ -267,7 +252,7 @@ Pada tahap persiapan data atau *data preparation* dilakukan beberapa proses, yai
 
    ![image](https://raw.githubusercontent.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/refs/heads/main/images/encoding%20fitur%20categori.png)
 
-   Gambar 8. Enconding Fitur Kategori (cut, color, clarity)
+   Gambar 9. Enconding Fitur Kategori (cut, color, clarity)
 
 3. **Reduksi Dimensi dengan PCA.**
 
@@ -275,7 +260,7 @@ Pada tahap persiapan data atau *data preparation* dilakukan beberapa proses, yai
 
    ![image](https://raw.githubusercontent.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/refs/heads/main/images/Reduksi%20Dimensi%20PCA.png)
 
-   Gambar 9. Grafik Fitur x, y, dan z
+   Gambar 10. Grafik Fitur x, y, dan z
 
    Hasil proporsi informasi dari fitur x, y, dan z dengan menggunakan Principal Component Analysis (PCA), yaitu
    `array([0.999, 0.001, 0.   ])`
@@ -288,17 +273,17 @@ Pada tahap persiapan data atau *data preparation* dilakukan beberapa proses, yai
 
    Proses standarisasi fitur numerik, yaitu carat dan dimension menggunakan StandardScaler sehingga fitur data menjadi bentuk yang lebih mudah diolah oleh model machine learning.
    
-   Tabel 6. Standarisasi Fitur Numerik
+   Tabel 5. Standarisasi Fitur Numerik
    |       | carat       | table       | dimension   |
    |-------|-------------|-------------|-------------|
    | count | 151879.0000 | 151879.0000 | 151879.0000 |
-   | mean  | -0.0000	   | 0.0000      | 0.0000      |
-   | std   | 1.0000	     | 1.0000	     | 1.0000      |
-   | min   | -1.3734	   | -2.3493	   | -1.8553     |
-   | 25%   | -0.9367	   | -0.5833	   | -0.9664     |
-   | 50%   | -0.3089	   | 0.0054	     | -0.1388     |
-   | 75%   | 0.8375	     | 0.5941	     | 0.9036      |
-   | max   | 3.4033	     | 2.3601	     | 2.6412      |
+   | mean  | -0.0000	 | 0.0000      | 0.0000      |
+   | std   | 1.0000	     | 1.0000	   | 1.0000      |
+   | min   | -1.3734	 | -2.3493	   | -1.8553     |
+   | 25%   | -0.9367	 | -0.5833	   | -0.9664     |
+   | 50%   | -0.3089	 | 0.0054	   | -0.1388     |
+   | 75%   | 0.8375	     | 0.5941	   | 0.9036      |
+   | max   | 3.4033	     | 2.3601	   | 2.6412      |
 
    Dapat dilihat bahwa setelah proses standarisasi sekarang nilai mean = 0 dan standar deviasi = 1.
 
@@ -381,10 +366,10 @@ Cara kerja Metrik MSE adalah dengan menghitung selisih hasil prediksi dengan nil
 
 Berikut adalah tabel nilai MSE pada setiap model dengan data latih dan data uji.
 
-Tabel 7. Nilai Evaluasi Model _Machine Learning_
-|	         | train      | test       |
+Tabel 6. Nilai Evaluasi Model _Machine Learning_
+|	       | train      | test       |
 |----------|------------|------------|
-| KNN	     | 158.060099 | 188.027968 |
+| KNN	   | 158.060099 | 188.027968 |
 | RF       | 184.881839 | 189.772913 |
 | Boosting | 133.044841 | 146.840974 |
 
@@ -392,7 +377,7 @@ Untuk memudahkan dalam mengevaluasi model kita akan melakukan visualisasi hasil 
 
 ![image](https://raw.githubusercontent.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/refs/heads/main/images/barplot%20MSE.png)
 
-Gambar 10. Grafik Evaluasi Model Machine Learning
+Gambar 11. Grafik Evaluasi Model Machine Learning
 
 Berdasarkan grafik diatas, dapat disimpulkan sebagai berikut:
 - Model dengan algoritma Gradient Boosting memberikan nilai _error_ yang paling kecil yaitu _train_ sebesar 133.044841 dan _test_ sebesar 146.840974.
@@ -401,7 +386,7 @@ Berdasarkan grafik diatas, dapat disimpulkan sebagai berikut:
 
 Berikut hasil uji prediksi menggunakan beberapa harga dari data test.
 
-Tabel 8. Hasil Pengujian Prediksi Model
+Tabel 7. Hasil Pengujian Prediksi Model
 |       | y_true | prediksi_KNN | prediksi_RF | prediksi_Boosting |
 |-------|--------|--------------|-------------|-------------------|
 | 65114 | 868    | 944.0        | 701.4	      | 915.8             |
