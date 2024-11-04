@@ -144,10 +144,9 @@ Kemudian dilakukan proses Exploratory Data Analysis (EDA) yang merupakan proses 
 
 4. **Memeriksa Data Duplikat**
 
-   Pengecekan terhadap data duplikat menunjukkan hasil sebagai berikut:
+   Langkah selanjutnya adalah menghapus nilai duplikat pada dataset. Penghapusan nilai duplikat ini sangat penting agar saat pelatihan model memiliki data yang berbeda dan tidak akan menambah weight dari data yang sama. Proses menghapus data yang duplikat dapat dilakukan dengan memanggil fungsi `duplicates()`. Pengecekan terhadap data duplikat menunjukkan hasil sebagai berikut:
 
    ```python
-   # Menghitung jumlah baris yang duplikat dalam Dataset
    jumlah_duplikat = gemstone.duplicated().sum()
    print("\nJumlah Duplikat:", jumlah_duplikat)
    ```
@@ -158,7 +157,7 @@ Kemudian dilakukan proses Exploratory Data Analysis (EDA) yang merupakan proses 
   
    Tidak ada data duplikat yang teridentifikasi dalam dataset ini.
 
-5. **Menangani Outliers**
+6. **Menangani Outliers**
 
    Outliers merupakan sampel yang nilainya sangat jauh dari cakupan umum data utama, dengan itu kita akan memeriksa apakah terdapat outlier pada kolom-kolom numerik.
 
@@ -174,7 +173,7 @@ Kemudian dilakukan proses Exploratory Data Analysis (EDA) yang merupakan proses 
 
    Setelah menggunakan metode IQR untuk menghilangkan outlier pada dataset jumlah dataset menjadi `168755` yang awalnya adalah `193563`.
 
-6. **Univariate Analysis**
+7. **Univariate Analysis**
 
    Pada tahap ini akan dilakukan analisis data dengan Univariate Analysis pada semua fitur, baik fitur kategorik maupun fitur numerik.
 
@@ -211,7 +210,7 @@ Kemudian dilakukan proses Exploratory Data Analysis (EDA) yang merupakan proses 
      - Distribusi harga berlian miring ke kanan (right-skewed), menunjukkan bahwa meskipun sebagian besar berlian dijual dengan harga lebih rendah, terdapat sejumlah berlian dengan harga yang jauh lebih tinggi.
      - Lebih dari setengah gemstone memiliki harga di bawah $2500, menunjukkan adanya kecenderungan harga yang lebih terjangkau pada sebagian besar data.
 
-7. **Multivariate Analysis**
+8. **Multivariate Analysis**
 
    Pada tahap ini akan dilakukan pengecekan rata-rata probabilitas Price terhadap masing-masing fitur untuk mengetahui pengaruh fitur kategori dan numerik terhadap Price.
 
@@ -240,7 +239,7 @@ Kemudian dilakukan proses Exploratory Data Analysis (EDA) yang merupakan proses 
 
      Berdasarkan Gambar 7, fokus pada relasi antara semua fitur numerik dengan fitur target yaitu ‘price’. Pada pola sebaran data grafik pairplot terlihat ‘carat’, ‘x’, ‘y’, dan ‘z’ memiliki korelasi yang tinggi dengan fitur "price". Sedangkan kedua fitur lainnya yaitu 'depth' dan 'table' terlihat memiliki korelasi yang lemah karena sebarannya tidak membentuk pola.
 
-8. **Correlation Matrix**
+9. **Correlation Matrix**
 
    ![Multivariate Analysis](https://raw.githubusercontent.com/FebriAdha/Submission-Predictive-Analytics-Gemstone-Price/refs/heads/main/images/Analysis%20Matrik%20Korelasi.png)
 
